@@ -4,11 +4,12 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const route = express.Router();
 //--MODELS
-const { User, Product, Admin } = require("../model/model");
+const { User, Items, Admin, Cart } = require("../model/model");
 //--instamces
 const user = new User();
-const product = new Product();
+const item = new Items();
 const admin = new Admin();
+const cart = new Cart();
 
 //GET HOME
 route.get("/", (req, res) => {
@@ -70,28 +71,53 @@ route.put("/reset-pass/admin:/id", bodyParser.json(), (req, res) => {
 });
 //--delete
 route.delete("/admin/:id", (req, res) => {
-  user.deleteAdmin(req, res);
+  admin.deleteAdmin(req, res);
 });
 
 //Products
 //--get all products & single product
-route.get("/products", (req, res) => {
-  product.fetchProducts(req, res);
+route.get("/items", (req, res) => {
+  item.fetchProducts(req, res);
 });
-route.get("/product/:id", (req, res) => {
-  product.fetchProduct(req, res);
+route.get("/item/:id", (req, res) => {
+  item.fetchProduct(req, res);
 });
 //add new product
-route.post("/product", bodyParser.json(), (req, res) => {
-  product.addProduct(req, res);
+route.post("/item", bodyParser.json(), (req, res) => {
+  item.addProduct(req, res);
 });
 //update product
-route.put("/product/:id", bodyParser.json(), (req, res) => {
-  product.updateProduct(req, res);
+route.put("/item/:id", bodyParser.json(), (req, res) => {
+  item.updateProduct(req, res);
 });
 //delete product
-route.delete("/product/:id", bodyParser.json(), (req, res) => {
-  product.deleteProduct(req, res);
+route.delete("/item/:id", bodyParser.json(), (req, res) => {
+  item.deleteProduct(req, res);
+});
+
+//CART
+//--get evrything in cart & single product
+route.get("/user/:id/carts", (req, res) => {
+  cart.fetchCart(req, res);
+});
+// route.get("/user/:id/cart", (req, res) => {
+//   item.fetchCartItem(req, res);
+// });
+//add new product
+route.post("/user/:id/cart", bodyParser.json(), (req, res) => {
+  cart.addCart(req, res);
+});
+//update product
+route.put("/user/:id/cart/:id", bodyParser.json(), (req, res) => {
+  cart.updateCart(req, res);
+});
+//delete cart item
+route.delete("/user/:id/cart", bodyParser.json(), (req, res) => {
+  cart.deleteCart(req, res);
+});
+//delete cart
+route.delete("/user/:id/cart/:id", bodyParser.json(), (req, res) => {
+  cart.deleteCart(req, res);
 });
 
 module.exports = route;
