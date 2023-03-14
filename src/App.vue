@@ -1,10 +1,24 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link> |
+    <router-link to="/contact">Contact</router-link> |
+    <router-link to="/login">Log In</router-link> |
+    <router-link to="/signin">Sign In</router-link> |
+    <router-link to="/admin">Admin</router-link> | 
+    <router-link to="/services">Services</router-link>
   </nav>
+  <!-- <NavMain/> -->
   <router-view/>
 </template>
+
+<script>
+// import NavMain from "@/components/NavMain.vue"
+// export default {
+//   name: NavMain,
+//   component: {NavMain}
+// }
+</script>
 
 <style>
 #app {
@@ -17,6 +31,8 @@
 
 nav {
   padding: 30px;
+  position: sticky;
+  background-color: #69E2FF;
 }
 
 nav a {
@@ -25,6 +41,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #CE3375;
 }
 </style>
