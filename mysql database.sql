@@ -1,17 +1,17 @@
--- CREATE TABLE Users(
--- userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
--- firstName VARCHAR(30) NOT NULL,
--- lastName VARCHAR(30) NOT NULL,
--- emailAddress VARCHAR (30) NOT NULL,
--- contactNo VARCHAR(12) NOT NULL,
--- userPassword TEXT NOT NULL,
--- userRole VARCHAR (12) NOT NULL,
--- relationship VARCHAR (15) NOT NULL,
--- childFirstName VARCHAR(20) NOT NULL,
--- childLastName VARCHAR(20) NOT NULL,
--- childGender VARCHAR(10) not null,
--- childAge INT NOT NULL,
--- enrollment VARCHAR(50) NOT NULL);
+CREATE TABLE Users(
+userID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+firstName VARCHAR(30) NOT NULL,
+lastName VARCHAR(30) NOT NULL,
+emailAddress VARCHAR (30) NOT NULL,
+contactNo VARCHAR(12) NOT NULL,
+userPassword TEXT NOT NULL,
+userRole VARCHAR (12) NOT NULL,
+relationship VARCHAR (15) NOT NULL,
+childFirstName VARCHAR(20) NOT NULL,
+childLastName VARCHAR(20) NOT NULL,
+childGender VARCHAR(10) not null,
+childAge INT NOT NULL,
+enrollment VARCHAR(50) NOT NULL);
 
 CREATE TABLE Admins(
 adminID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

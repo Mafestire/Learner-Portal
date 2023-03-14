@@ -258,8 +258,8 @@ class Admin {
   }
 }
 //PRODUCTS CLASS
-class Items {
-  fetchItems(req, res) {
+class Product {
+  fetchProducts(req, res) {
     const strQry = `SELECT ID, prodName, prodDescription, category, price, prodQuantity, imgURL
                   FROM Products;`;
     database.query(strQry, (err, data) => {
@@ -267,7 +267,7 @@ class Items {
       res.status(200).json({ results: data });
     });
   }
-  fetchItem(req, res) {
+  fetchProduct(req, res) {
     const strQry = `SELECT ID, prodName, prodDescription, category, price, prodQuantity, imgURL
                   FROM Products
                   WHERE id = ?;`;
@@ -276,7 +276,7 @@ class Items {
       res.status(200).json({ results: results });
     });
   }
-  addItem(req, res) {
+  addProduct(req, res) {
     const strQry = `
                   INSERT INTO Products
                   SET ?;
@@ -291,7 +291,7 @@ class Items {
       }
     });
   }
-  updateItem(req, res) {
+  updateProduct(req, res) {
     const strQry = `
                   UPDATE Products
                   SET ?
@@ -307,7 +307,7 @@ class Items {
       }
     });
   }
-  deleteItem(req, res) {
+  deleteProduct(req, res) {
     const strQry = `
                   DELETE FROM Products
                   WHERE ID = ?;
@@ -383,4 +383,4 @@ class Cart {
   }
 }
 
-module.exports = { User, Items, Admin, Cart };
+module.exports = { User, Product, Admin, Cart };
