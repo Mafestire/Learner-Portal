@@ -2,7 +2,7 @@
     <div class="back">
         <div class="cov">
 
-            <form action="" @submit.prevent="login">
+            <form action="" @submit.prevent="loginUser">
                 <h2>Welcome Back</h2>
                 <h4>Please Log In</h4>
                 <label for="" >User Email</label>
@@ -31,16 +31,15 @@ export default{
     },
     data(){
         return{
+            logger: {
             emailAddress: "",
             userPassword: "",
+            }
         };
     },
     methods: {
-        async login(){
-            await this.$store.dispatch("login", {
-                emailAddress: this.emailAddress,
-                userPassword: this.userPassword
-            });
+        async loginUser(){
+            await this.$store.dispatch("login", this.logger);
         },
 
     },

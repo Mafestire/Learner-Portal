@@ -17,7 +17,8 @@
                         <br>
                         <label for="">Child's Last Name</label>
                         <br>
-                        <input type="text" v-model="register.childFirstName" placeholder="Enter Child's First name" required>
+                        <input type="text" v-model="register.childFirstName" placeholder="Enter Child's First name"
+                            required>
                         <br>
                         <label for="">Child's Last Name</label>
                         <br>
@@ -39,7 +40,7 @@
                     <div class="info2">
                         <label for="">Role</label>
                         <br>
-                        <select name="role" id="role" v-model="register.userRole"  required>
+                        <select name="role" id="role" v-model="register.userRole" required>
                             <option value="">select</option>
                             <option value="parent">Parent</option>
                             <option value="guardian">Guardian</option>
@@ -86,45 +87,49 @@
 </template>
 
 <script>
-export default{
-name: 'registerUser',
-data(){
-    return{
-        register:{
-            firstName: "",
-            lastName: "",
-            emailAddress: "",
-            contactNo: "",
-            childFirstName: "",
-            childLastName: "",
-            childAge: "",
-            childGender: "",
-            userRole: "",
-            relationship: "",
-            enrollment: "",
-            userPassword: "",
-            confirmPassword: "",
+export default {
+    name: 'registerUser',
+    data() {
+        return {
+            register: {
+                firstName: "",
+                lastName: "",
+                emailAddress: "",
+                contactNo: "",
+                childFirstName: "",
+                childLastName: "",
+                childAge: "",
+                childGender: "",
+                userRole: "",
+                relationship: "",
+                enrollment: "",
+                userPassword: "",
+                confirmPassword: "",
+            }
+        };
+    },
+    methods: {
+         registerForm() {
+            let data = {
+                firstName : this.register.firstName,
+                lastName : this.register.lastName,
+                emailAddress : this.register.emailAddress,
+                contactNo : this.register.contactNo,
+                childFirstName : this.register.childFirstName,
+                childLastName : this.register.childLastName,
+                childAge : this.register.childAge,
+                childGender : this.register.childGender,
+                userRole : this.register.userRole,
+                relationship : this.register.relationship,
+                enrollment : this.register.enrollment,
+                userPassword : this.register.userPassword,
+            }
+
+            this.$store.dispatch("registerUser", data);
+
         }
-    };
-},
-methods: {
-    async registerForm(){
-        await this.$store.dispatch("registerUser", this.register);
-        this.register.firstName = "";
-        this.register.lastName = "";
-        this.register.emailAddress = "";
-        this.register.contactNo = "";
-        this.register.childFirstName = "";
-        this.register.childLastName = "";
-        this.register.childAge = "";
-        this.register.childGender = "";
-        this.register.userRole = "";
-        this.register.relationship = "";
-        this.register.enrollment = "";
-        this.register.userPassword = "";
-        this.register.confirmPassword = "";
-    }
-},
+
+    },
 }
 </script>
 
@@ -149,8 +154,8 @@ form {
     color: #CE3375;
 }
 
-.link{
-   text-decoration: none;
+.link {
+    text-decoration: none;
     color: #CE3375;
 }
 
@@ -172,7 +177,7 @@ input {
     text-align: center;
 }
 
-select{
+select {
     background-color: #9EECFF;
 }
 
@@ -184,21 +189,22 @@ p {
 .info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
- 
+
 }
 
-.info1{
+.info1 {
     border-right: 1px solid black;
     padding-right: 1rem;
 }
 
-.info2{
+.info2 {
     padding-left: 1rem;
 }
-.info2 label{
+
+.info2 label {
     margin-top: 2rem;
 }
-h4{
+
+h4 {
     margin-bottom: 1rem;
-}
-</style>
+}</style>

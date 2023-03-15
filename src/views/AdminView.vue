@@ -40,7 +40,7 @@
                                             <th>Profile Image</th>
                                             <th>Edit</th>
                                         </thead>
-                                        <tbody id="uniform" class="">
+                                        <tbody id="uniform" class="use">
                                             <tr v-for="user in users" :key="user.id" style="font-size: 14px;">
                                                 <td>{{ user.firstName }}</td>
                                                 <td>{{ user.lastName }}</td>
@@ -392,16 +392,25 @@ data() {
 
 <style scoped>
 .cont{
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
-.users{
-  justify-content: space-between;
+
+.table{
+    background-color: aqua;
+    width: 30rem;
+}
+tbody{
+    background-color: blue;
+}
+.use{
+  /* justify-content: space-between;
   display: flex;
-  margin-top: 150px;
+  margin-top: 150px; */
+  
 }
 .products{
   justify-content: space-between;
-  display: flex;
+  /* display: flex; */
   margin-top: 30px;
 }
 thead{
@@ -420,6 +429,7 @@ tbody{
   padding: 0;
   font-size: 20px;
   color: black;
+  width: 30rem;
 }
 .modal-body input{
     width: 100%;
@@ -430,6 +440,7 @@ tbody{
     outline: none;
     height: 40px;
     color: black;
+    text-align: center;
 }
 .modal-header{
   color: black;

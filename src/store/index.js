@@ -48,8 +48,8 @@ export default createStore({
     },
   },
   actions: {
-    async registerUser(context, payload) {
-      const res = await axios.post(`${LearnerPortal}register`, payload)
+    async registerUser(context, data) {
+      const res = await axios.post(`${LearnerPortal}register`, data)
       const { msg, err } = await res.data;
       if (msg) {
         context.commit('setUser', msg);
@@ -57,11 +57,12 @@ export default createStore({
         context.commit('setUser', err);
       }
     },
-    async loginUser(context, payload) {
-      const res = await axios.post(`${LearnerPortal}login`, payload)
+    async loginUser(context, logger) {
+      const res = await axios.post(`${LearnerPortal}login`, logger)
       const {result, msg, err } = await res.data;
       if (result) {
         context.commit('cUser', result)
+        console.log(result);
         context.commit('setUser', msg);
       } else {
         context.commit('setUser', err);
