@@ -2,27 +2,49 @@
     <div class="back">
         <div class="cov">
 
-            <form action="">
+            <form action="" @submit.prevent="login">
                 <h2>Welcome Back</h2>
                 <h4>Please Log In</h4>
-                <label for="">User Email</label>
+                <label for="" >User Email</label>
                 <br>
-                <input type="text">
+                <input type="text" v-model="emailAddress" required>
                 <br>
                 <label for="">User Password</label>
                 <br>
-                <input type="password">
+                <input type="password" v-model="userPassword" required>
                 <br>
                 <button>LOG IN</button>
                 <br>
-               <p>Do not have an account? let's sign you up <button>SIGN UP</button></p>
+               <!-- <p>Do not have an account? let's sign you up <button>SIGN UP</button></p> -->
+               <router-link to="/signin" class="link">Do not have an account? let's sign you up </router-link>
             </form>
         </div>
     </div>
 </template>
 
 <script>
+export default{
+    computed:{
+        user(){
+            return this.$store.state.user
+        }
+    },
+    data(){
+        return{
+            emailAddress: "",
+            userPassword: "",
+        };
+    },
+    methods: {
+        async login(){
+            await this.$store.dispatch("login", {
+                emailAddress: this.emailAddress,
+                userPassword: this.userPassword
+            });
+        },
 
+    },
+}
 </script>
 
 <style scoped>
@@ -34,17 +56,15 @@
 }
 
 form {
-    width: 25rem;
-    /* background-color: #2a410a; */
+    width: 20rem;
     padding: 1.5rem;
-    /* background: #CE3375; */
     box-shadow: 0 8px 32px 0;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
     border: 1px solid;
-    transform: translateY(60%);
-    margin-left: 22rem;
+    transform: translateY(50%);
+    margin-left: 25rem;
     color: #CE3375;
 }
 
@@ -58,10 +78,14 @@ button {
     color: #00CCFF;
 }
 input{
-    background-color: wheat;
+    background-color: #9EECFF;
     color: black;
 }
 p{
     font-size: .7rem;
+}
+.link{
+  text-decoration: none;
+  color: #CE3375;
 }
 </style>

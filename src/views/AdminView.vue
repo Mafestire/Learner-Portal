@@ -40,12 +40,14 @@
                                             <th>Profile Image</th>
                                             <th>Edit</th>
                                         </thead>
-                                        <tbody id="shoe-list" class="">
+                                        <tbody id="uniform" class="">
                                             <tr v-for="user in users" :key="user.id" style="font-size: 14px;">
                                                 <td>{{ user.firstName }}</td>
                                                 <td>{{ user.lastName }}</td>
-                                                <td>{{ user.userRole }}</td>
-                                                <td><img :src="user.userProfile" style="width: 60px; height: 50px;"></td>
+                                                <td>{{ user.relationship }}</td>
+                                                <td>{{ user.childFirstName }}</td>
+                                                <td>{{ user.childLastName }}</td>
+                                                <td>{{ user.contactNo }}</td>
                                                 <td>
                                                     <a class="btn btn-dark btn-md edit" data-bs-toggle="modal"
                                                         :data-bs-target="`#editModal${user.userID}`" id="addCart"
@@ -72,12 +74,19 @@
                                                                         <p>Email Address</p>
                                                                         <input class="col-12 my-3 emailAdd" id="Price"
                                                                             type="text" :value="user.emailAdd" required>
-                                                                        <p>User Role</p>
+                                                                        <p>Relationship</p>
                                                                         <input class="col-12 my-3" id="Price" type="text"
-                                                                            :value="user.userRole" required>
-                                                                        <p>Profile Image</p>
-                                                                        <input class="col-12 my-3" id="img" type="text"
-                                                                            :value="user.userProfile" required>
+                                                                            :value="user.relationship" required>
+                                                                        <p>Child's First Name</p>
+                                                                        <input class="col-12 my-3" id="Price" type="text"
+                                                                            :value="user.childFirstName" required>
+                                                                        <p>Child's Last Name</p>
+                                                                        <input class="col-12 my-3" id="Price" type="text"
+                                                                            :value="user.childLastName" required>
+                                                                        <p>Contact no</p>
+                                                                        <input class="col-12 my-3" id="Price" type="text"
+                                                                            :value="user.contactNo" required>
+                                                                        
                                                                         <div class="modal-footer">
                                                                             <button type="Submit" @click="editUser"
                                                                                 class="btn btn-light"
@@ -154,9 +163,9 @@
                                             <td><img :src="item.imgURL" style="width: 60px; height: 50px;"></td>
                                             <td>
                                                 <a href="#" class="btn btn-dark btn-md edit" data-bs-toggle="modal"
-                                                    :data-bs-target="`#editModal${item.id}`" id="addCart"
+                                                    :data-bs-target="`#editModal${item.ID}`" id="addCart"
                                                     style="font-size: 12px;">Edit</a>
-                                                <div class="modal fade" :id="`editModal${item.id}`" :key="item.id"
+                                                <div class="modal fade" :id="`editModal${item.ID}`" :key="item.ID"
                                                     tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -196,28 +205,96 @@
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-danger btn-md delete"
-                                                style="font-size: 12px;" @click="deleteProduct">Del</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                                    style="font-size: 12px;" @click="deleteProduct">Del</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div></template>
+</template>
 
 <script>
 import axios from "axios";
+export default {
+    data() {
+    return {
+        items: [],
+        users: [],
+    };
+},
+
+created(){
+    this.fetchProducts();
+    this.fetchUsers();
+},
 methods: {
-    async editUser(id) {
+    async updateUser(id){
         try {
             await axios.put(`https://learner-portal-8hg3.onrender.com ${id}`);
+            this.fetchUser();
+        }catch(err){
+            console.log(err);
+        }
+    },
+    async fetchUsers(){
+        try{
+            const response = await axios.get("https://learner-portal-8hg3.onrender.com/users");
+            this.users = response.data.results;
+            console.log(response);
+        }catch(err){
+            console.log(err);
+        }
+    },
+    async deleteUser(id){
+        try{await axios.delete(`https://learner-portal-8hg3.onrender.com/users ${id}`);
+    this.fetchUsers();
+}catch(err){
+    console.log(err);
+}
+    },
+    async fetchProducts(){
+        try{
+            const response = await axios.get("https://learner-portal-8hg3.onrender.com/products");
+            this.items = response.data.results;
+            console.log(response);
+        }catch(err){
+            console.log(err);
+        }
+    },
+    async updateProduct(id){
+        try{
+            await axios.put(`https://learner-portal-8hg3.onrender.com/product ${id}`);
+            this.fetchUsers();
+        }catch(err){
+            console.log(err);
+        }
+    },
+    async addProduct(){
+        try{
+            const response = await axios.post("https://learner-portal-8hg3.onrender.com/product");
+            this.addProduct();
+            this.items = response.data.results;
+        }catch(err){
+            console.log(err);
+        }
+    },
+    async deleteProduct(id){
+        try{
+            await axios.delete(`https://learner-portal-8hg3.onrender.com/product ${id}`);
+            this.fetchProducts();
+        }catch(err){
+            console.log(err);
         }
     }
+} 
 }
+
 
 </script>
 
@@ -312,4 +389,55 @@ data() {
 };
 </script> -->
 
-<style scoped></style>
+
+<style scoped>
+.cont{
+  overflow-x: hidden;
+}
+.users{
+  justify-content: space-between;
+  display: flex;
+  margin-top: 150px;
+}
+.products{
+  justify-content: space-between;
+  display: flex;
+  margin-top: 30px;
+}
+thead{
+  background-color: #CE3375;
+  color: black;
+}
+tbody{
+  background: #CE3375;
+  color: black;
+}
+.modal-content{
+  background: #CE3375;
+}
+.modal-body p{
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  color: black;
+}
+.modal-body input{
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    height: 40px;
+    color: black;
+}
+.modal-header{
+  color: black;
+  border-bottom: 0px;
+}
+.modal-footer{
+  border-top: 0px;
+}
+.btn-close{
+  background-color: black;
+}</style>
