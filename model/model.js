@@ -19,6 +19,7 @@ class User {
       if (!data || data == null) {
         res.status(401).json({ err: "Incorrect Email Address. Try Again" });
       } else {
+        console.log(data[0].userPassword);
         await compare(userPassword, data[0].userPassword, (cErro, cResult) => {
           if (cErro) throw cErro;
           const jwToken = createToken({
@@ -267,7 +268,7 @@ class Product {
       res.status(200).json({ results: data });
     });
   }
-  fetchProduct(req, res) {
+  fetchProducts(req, res) {
     const strQry = `SELECT ID, prodName, prodDescription, category, price, prodQuantity, imgURL
                   FROM Products
                   WHERE id = ?;`;
