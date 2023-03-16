@@ -18,10 +18,10 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "*");
   next();
 });
+// cookieParser(),
+app.use(route);
 
-app.use(cors(), cookieParser(), route);
-
-app.use(express.json(), express.urlencoded({ extended: true }));
+app.use(cors(), express.json(), express.urlencoded({ extended: true }));
 
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`);
