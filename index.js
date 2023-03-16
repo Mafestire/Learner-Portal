@@ -19,13 +19,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(
-  cors(),
-  route,
-  cookieParser(),
-  express.json,
-  express.urlencoded({ extended: false })
-);
+app.use(cookieParser(), route);
+
+app.use(cors(), express.json(), express.urlencoded({ extended: true }));
 
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`);
