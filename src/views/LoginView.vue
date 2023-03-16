@@ -2,44 +2,47 @@
     <div class="back">
         <div class="cov">
 
-            <form action="" @submit.prevent="loginUser">
+            <form @submit.prevent="loginUser">
                 <h2>Welcome Back</h2>
                 <h4>Please Log In</h4>
-                <label for="" >User Email</label>
+                <label>User Email</label>
                 <br>
-                <input type="text" v-model="emailAddress" required>
+                <input type="text" v-model="logger.emailAddress" required>
                 <br>
                 <label for="">User Password</label>
                 <br>
-                <input type="password" v-model="userPassword" required>
+                <input type="password" v-model="logger.userPassword" required>
                 <br>
-                <button>LOG IN</button>
+                <p class="lead">{{ message }}</p>
+                <button type="submit" class="btn btn-secondary">LOG IN</button>
                 <br>
-               <!-- <p>Do not have an account? let's sign you up <button>SIGN UP</button></p> -->
-               <router-link to="/signin" class="link">Do not have an account? let's sign you up </router-link>
+                <!-- <p>Do not have an account? let's sign you up <button>SIGN UP</button></p> -->
+                <router-link to="/register" class="link">Do not have an account? let's sign you up </router-link>
             </form>
         </div>
     </div>
 </template>
 
 <script>
-export default{
-    computed:{
-        user(){
-            return this.$store.state.user
-        }
-    },
-    data(){
-        return{
+export default {
+    data() {
+        return {
             logger: {
-            emailAddress: "",
-            userPassword: "",
+                emailAddress: "",
+                userPassword: "",
             }
         };
     },
+
+    computed: {
+        message() {
+            return this.$store.state.message
+        }
+    },
+
     methods: {
-        async loginUser(){
-            await this.$store.dispatch("login", this.logger);
+        loginUser() {
+            this.$store.dispatch("loginUser", this.logger);
         },
 
     },
@@ -76,15 +79,18 @@ button {
     background-color: #CE3375;
     color: #00CCFF;
 }
-input{
+
+input {
     background-color: #9EECFF;
     color: black;
 }
-p{
+
+p {
     font-size: .7rem;
 }
-.link{
-  text-decoration: none;
-  color: #CE3375;
+
+.link {
+    text-decoration: none;
+    color: #CE3375;
 }
 </style>

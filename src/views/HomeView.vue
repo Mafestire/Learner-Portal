@@ -3,9 +3,11 @@
     <div class="home">
       <div class="text">
         <h1>Welcome</h1>
-        <p>Mange Day Care has the best care ypur children, for 20 years we have been guiding, partnering and supporting responsible parents with their belief that
-        quality education is the foundation to a successful life.... 
-        <router-link to="/about" class="link">read more</router-link></p>
+        <p>Mange Day Care has the best care ypur children, for 20 years we have been guiding, partnering and supporting
+          responsible parents with their belief that
+          quality education is the foundation to a successful life....
+          <router-link to="/about" class="link">read more</router-link>
+        </p>
       </div>
 
       <div class="cont">
@@ -19,18 +21,20 @@
         <div class="serv">
           <div class="one">
             <h3>Care for Babies</h3>
-          <img src="https://i.postimg.cc/pVCvCjJh/baby2.jpg" alt="" srcset="">
+            <img src="https://i.postimg.cc/pVCvCjJh/baby2.jpg" alt="" srcset="">
+          </div>
+          <div class="two">
+            <h3>Classes for Pre-School</h3>
+            <img src="https://i.postimg.cc/0yxHBX59/chil1.jpg" alt="" srcset="">
+          </div>
+          <div class="three">
+            <h3>Classes for Toddlers</h3>
+            <img src="https://i.postimg.cc/NGmDv8zF/tod1.png" alt="" srcset="">
+          </div>
         </div>
-        <div class="two">
-          <h3>Classes for Pre-School</h3>
-          <img src="https://i.postimg.cc/0yxHBX59/chil1.jpg" alt="" srcset="">
-        </div>
-        <div class="three">
-          <h3>Classes for Toddlers</h3>
-          <img src="https://i.postimg.cc/NGmDv8zF/tod1.png" alt="" srcset="">
-        </div>
-        </div>
-        <router-link to="/services" class="link2"><h6>more about our services</h6> </router-link>
+        <router-link to="/services" class="link2">
+          <h6>more about our services</h6>
+        </router-link>
       </div>
 
     </div>
@@ -40,43 +44,42 @@
 <script>
 // import axios from 'axios'
 export default {
-computed: {
-  sortAndFilterProducts(){
-    let sortedProducts = this.sortProducts();
-    let filteredProducts = this.filteredProducts(sortedProducts);
-    let searchProducts = this.searchProducts(filteredProducts);
-    return searchProducts;
+  computed: {
+    sortAndFilterProducts() {
+      let sortedProducts = this.sortProducts();
+      let filteredProducts = this.filteredProducts(sortedProducts);
+      let searchProducts = this.searchProducts(filteredProducts);
+      return searchProducts;
+    },
   },
   methods: {
-    methods:{
-      sortPrice(){
-        this.$store.commit("sortProductsPrice")
-      }
+
+    sortPrice() {
+      this.$store.commit("sortProductsPrice")
     },
-    sortProducts(){
+    sortProducts() {
       let sort = this.sortBy;
-      return this.sortProducts.sort((a, b) =>{
+      return this.sortProducts.sort((a, b) => {
         if (a[sort] < b[sort]) return -1;
         if (a[sort] > b[sort]) return 1;
         return 0;
       });
     },
-    filteredProducts(products){
-      if(this.filterBy === 'all'){
+    filteredProducts(products) {
+      if (this.filterBy === 'all') {
         return products;
-      }else{
+      } else {
         return products.filter(product => product.category === this.filterBY);
       }
     },
-    searchProducts(products){
-      if (this.search === ''){
+    searchProducts(products) {
+      if (this.search === '') {
         return products;
-      }else{
+      } else {
         return products.filter(product => product.name.toLowerCase().includes(this.searchProducts.toLowerCase()));
       }
     }
   }
-}
 }
 </script>
 
@@ -114,36 +117,44 @@ img {
 }</style> -->
 
 <style scoped>
-.link{
+.link {
   text-decoration: none;
   color: #CE3375;
 }
-.link2{
+
+.link2 {
   text-decoration: none;
   color: #CE3375;
   font-size: 2rem;
 }
-.text{
+
+.text {
   width: 23rem;
   margin-left: 27rem;
   margin-top: 1rem;
 }
-h1, h2{
+
+h1,
+h2 {
   color: #CE3375;
 }
-p{
+
+p {
   margin-top: 2rem;
 }
-img{
+
+img {
   margin-top: 1rem;
   width: 20rem;
 }
-.serv{
+
+.serv {
   margin-top: 1rem;
   display: flex;
   justify-content: space-around;
 }
-.services{
+
+.services {
   margin-top: 3rem;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -151,9 +162,8 @@ img{
   border-top: 1px solid #CE3375;
 }
 
-.cont{
+.cont {
   margin-top: 5rem;
   border: 1px solid #CE3375;
 }
-
 </style>

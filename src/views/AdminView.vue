@@ -1,7 +1,7 @@
 <template>
     <div class="land">
 
-        <div class="cont">
+        <!-- <div class="cont">
             <div class="users container">
                 <h1>Users</h1>
                 <button type="button" class="btn btn-dark my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -86,7 +86,7 @@
                                                                         <p>Contact no</p>
                                                                         <input class="col-12 my-3" id="Price" type="text"
                                                                             :value="user.contactNo" required>
-                                                                        
+
                                                                         <div class="modal-footer">
                                                                             <button type="Submit" @click="editUser"
                                                                                 class="btn btn-light"
@@ -215,84 +215,113 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+    </div>
+
+    <div class="admin">
+        <div class="users">
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Contact No.</th>
+                    <th>Email Add.</th>
+                    <th>Relationship</th>
+                    <th>Role</th>
+                    <th>Child's Name</th>
+                    <th>Child's Surname</th>
+                    <th>Child's Age</th>
+                    <th>Child's Gender</th>
+                    <th>Enrolment</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </thead>
+                <tbody>
+                    <tr v-for="user in fetchUsers" :key="user.userID">
+                        <td>{{ user.userID }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.contactNo }}</td>
+                        <td>{{ user.relationship }}</td>
+                        <td>{{ user.userRole }}</td>
+                        <td>{{ user.childFirstName }}</td>
+                        <td>{{ user.childLastName }}</td>
+                        <td>{{ user.childAge }}</td>
+                        <td>{{ user.childGender }}</td>
+                        <td>{{ user.enrollment }}</td>
+                        <td>{{ user.firstName }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admins">
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Add.</th>
+                    <th>Profile</th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="products">
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                </thead>
+
+                <tbody>
+                    <tr v-for="product in fetchProducts" :key="product.ID">
+                        <td>{{ product.ID }}</td>
+                        <td>{{ product.proName }}</td>
+                        <td>{{ product.prodDescription }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.prodQuantity }}</td>
+                        <td>{{ product.imgURL }}</td>
+                       
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
 
 <script>
-import axios from "axios";
 export default {
-    data() {
-    return {
-        items: [],
-        users: [],
-    };
-},
+    computed: {
+        fetchUsers() {
+            return this.$store.state.users;
+        },
+        fetchProducts(){
+            return this.$store.state.products;
+        }
+    },
 
-created(){
-    this.fetchProducts();
-    this.fetchUsers();
-},
-methods: {
-    async updateUser(id){
-        try {
-            await axios.put(`https://learner-portal-8hg3.onrender.com ${id}`);
-            this.fetchUser();
-        }catch(err){
-            console.log(err);
-        }
-    },
-    async fetchUsers(){
-        try{
-            const response = await axios.get("https://learner-portal-8hg3.onrender.com/users");
-            this.users = response.data.results;
-            console.log(response);
-        }catch(err){
-            console.log(err);
-        }
-    },
-    async deleteUser(id){
-        try{await axios.delete(`https://learner-portal-8hg3.onrender.com/users ${id}`);
-    this.fetchUsers();
-}catch(err){
-    console.log(err);
-}
-    },
-    async fetchProducts(){
-        try{
-            const response = await axios.get("https://learner-portal-8hg3.onrender.com/products");
-            this.items = response.data.results;
-            console.log(response);
-        }catch(err){
-            console.log(err);
-        }
-    },
-    async updateProduct(id){
-        try{
-            await axios.put(`https://learner-portal-8hg3.onrender.com/product ${id}`);
-            this.fetchUsers();
-        }catch(err){
-            console.log(err);
-        }
-    },
-    async addProduct(){
-        try{
-            const response = await axios.post("https://learner-portal-8hg3.onrender.com/product");
-            this.addProduct();
-            this.items = response.data.results;
-        }catch(err){
-            console.log(err);
-        }
-    },
-    async deleteProduct(id){
-        try{
-            await axios.delete(`https://learner-portal-8hg3.onrender.com/product ${id}`);
-            this.fetchProducts();
-        }catch(err){
-            console.log(err);
-        }
+    created() {
+        this.$store.dispatch("fetchUsers");
+        this.$store.dispatch("fetchProducts")
     }
-} 
 }
 
 
@@ -391,47 +420,55 @@ data() {
 
 
 <style scoped>
-.cont{
-  /* overflow-x: hidden; */
+.cont {
+    /* overflow-x: hidden; */
 }
 
-.table{
+.table {
     background-color: aqua;
     width: 30rem;
 }
-tbody{
+
+tbody {
     background-color: blue;
 }
-.use{
-  /* justify-content: space-between;
+
+.use {
+    /* justify-content: space-between;
   display: flex;
   margin-top: 150px; */
-  
+
 }
-.products{
-  justify-content: space-between;
-  /* display: flex; */
-  margin-top: 30px;
+
+.products {
+    justify-content: space-between;
+    /* display: flex; */
+    margin-top: 30px;
 }
-thead{
-  background-color: #CE3375;
-  color: black;
+
+thead {
+    background-color: #CE3375;
+    color: black;
 }
-tbody{
-  background: #CE3375;
-  color: black;
+
+tbody {
+    background: #CE3375;
+    color: black;
 }
-.modal-content{
-  background: #CE3375;
+
+.modal-content {
+    background: #CE3375;
 }
-.modal-body p{
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  color: black;
-  width: 30rem;
+
+.modal-body p {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    color: black;
+    width: 30rem;
 }
-.modal-body input{
+
+.modal-body input {
     width: 100%;
     margin-bottom: 20px;
     background-color: transparent;
@@ -442,13 +479,17 @@ tbody{
     color: black;
     text-align: center;
 }
-.modal-header{
-  color: black;
-  border-bottom: 0px;
+
+.modal-header {
+    color: black;
+    border-bottom: 0px;
 }
-.modal-footer{
-  border-top: 0px;
+
+.modal-footer {
+    border-top: 0px;
 }
-.btn-close{
-  background-color: black;
-}</style>
+
+.btn-close {
+    background-color: black;
+}
+</style>

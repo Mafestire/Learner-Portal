@@ -2,7 +2,7 @@
     <div class="back">
         <div class="cov">
 
-            <form action="" @submit.prevent="registerForm" method="POST">
+            <form @submit.prevent="registerForm">
                 <h2>Welcome</h2>
                 <h4>Lets create your account</h4>
                 <div class="info">
@@ -50,19 +50,19 @@
                         <br>
                         <select name="relations" id="relations" v-model="register.relationship" required>
                             <option value="">select</option>
-                            <option value="female">Mother</option>
-                            <option value="male">Father</option>
-                            <option value="male">Aunt</option>
-                            <option value="male">Grandparent</option>
+                            <option value="Mother">Mother</option>
+                            <option value="Father">Father</option>
+                            <option value="Aunt">Aunt</option>
+                            <option value="Grandparent">Grandparent</option>
                         </select>
                         <br>
                         <label for="">Enrolement</label>
                         <br>
                         <select name="enrolment" id="enrolment" v-model="register.enrollment" required>
                             <option value="">select</option>
-                            <option value="female">Infancy 0 - 18 months</option>
-                            <option value="male">Toddlers 18 months - 3 years</option>
-                            <option value="male">Children 4 - 5 years</option>
+                            <option value="Infancy">Infancy 0 - 18 months</option>
+                            <option value="Toddlers">Toddlers 18 months - 3 years</option>
+                            <option value="Children">Children 4 - 5 years</option>
                         </select>
                         <br>
                         <label for="">User Email</label>
@@ -74,13 +74,17 @@
                         <input type="password" v-model="register.userPassword" placeholder="Enter Password" required>
                         <label for="">Confirm Password</label>
                         <br>
-                        <input type="password" v-model="register.confirmPassword" placeholder="Confirm Password" required>
+                        <input type="password" placeholder="Confirm Password" required>
                         <br>
                     </div>
                 </div>
-                <button>SIGN UP</button>
+                <div>
+                    <p class="lead">{{ message }}</p>
+                </div>
+                <input type="submit" class="btn btn-secondary" value="SIGN UP">
+                <!-- <button type="submit" class="btn btn-secondary">SIGN UP</button> -->
                 <br>
-                <router-link to="/login" class="link">Log In</router-link>
+                <!-- <router-link to="/login" class="link">Log In</router-link> -->
             </form>
         </div>
     </div>
@@ -103,29 +107,33 @@ export default {
                 userRole: "",
                 relationship: "",
                 enrollment: "",
-                userPassword: "",
-                confirmPassword: "",
+                userPassword: ""
             }
         };
     },
+    computed: {
+        message() {
+            return this.$store.state.message
+        }
+    },
     methods: {
-         registerForm() {
-            let data = {
-                firstName : this.register.firstName,
-                lastName : this.register.lastName,
-                emailAddress : this.register.emailAddress,
-                contactNo : this.register.contactNo,
-                childFirstName : this.register.childFirstName,
-                childLastName : this.register.childLastName,
-                childAge : this.register.childAge,
-                childGender : this.register.childGender,
-                userRole : this.register.userRole,
-                relationship : this.register.relationship,
-                enrollment : this.register.enrollment,
-                userPassword : this.register.userPassword,
-            }
+        registerForm() {
+            // let data = {
+            //     firstName : this.register.firstName,
+            //     lastName : this.register.lastName,
+            //     emailAddress : this.register.emailAddress,
+            //     contactNo : this.register.contactNo,
+            //     childFirstName : this.register.childFirstName,
+            //     childLastName : this.register.childLastName,
+            //     childAge : this.register.childAge,
+            //     childGender : this.register.childGender,
+            //     userRole : this.register.userRole,
+            //     relationship : this.register.relationship,
+            //     enrollment : this.register.enrollment,
+            //     userPassword : this.register.userPassword,
+            // }
 
-            this.$store.dispatch("registerUser", data);
+            this.$store.dispatch("registerUser", this.register);
 
         }
 
@@ -207,4 +215,5 @@ p {
 
 h4 {
     margin-bottom: 1rem;
-}</style>
+}
+</style>
