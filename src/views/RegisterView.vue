@@ -15,6 +15,14 @@
                         <br>
                         <input type="text" v-model="register.lastName" placeholder="Enter Last name" required>
                         <br>
+                        <label for="">Contact Number</label>
+                        <br>
+                        <input type="number" v-model="register.contactNo" placeholder="Enter conatct no." required>
+                        <br>
+                        <label for="">Email Address</label>
+                        <br>
+                        <input type="text" v-model="register.emailAddress" placeholder="Enter email" required>
+                        <br>
                         <label for="">Child's Last Name</label>
                         <br>
                         <input type="text" v-model="register.childFirstName" placeholder="Enter Child's First name"
@@ -28,16 +36,17 @@
                         <br>
                         <input type="number" v-model="register.childAge" placeholder="Enter Child's Age" required>
                         <br>
+                       
+                    </div>
+                    <div class="info2">
                         <label for="">Child's gender</label>
-                        <br>
+                       <br>
                         <select name="gender" id="gender" v-model="register.childGender" required>
                             <option value="">select</option>
                             <option value="female">Female</option>
                             <option value="male">Male</option>
                         </select>
                         <br>
-                    </div>
-                    <div class="info2">
                         <label for="">Role</label>
                         <br>
                         <select name="role" id="role" v-model="register.userRole" required>
@@ -177,6 +186,7 @@ button {
     padding: .2rem;
     background-color: #CE3375;
     color: #00CCFF;
+    cursor: pointer;
 }
 
 input {

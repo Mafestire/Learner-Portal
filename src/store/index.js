@@ -109,6 +109,53 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
+    async registerAdmin(context, data){
+      const res = await axios.post(`$[LearnerPortal]register-admin`, data);
+      console.log("Register a new Admin: ", res);
+      const {msg, err} = await res.data;
+      if(msg){
+        context.commit("setMessage", msg);
+      }else{
+        context.commit("setMessage", err);
+      }
+    },
+    async loginAdmin(context, logger){
+      const res = await axios.post(`${LearnerPortal}login-admin`, logger);
+      const {result, msg, err} = await res.data;
+      if(result){
+        context.commit("setAsmin", result);
+        context.commit("setMessage", msg);
+      }else{
+        context.commit("setMessage", err);
+      }
+    },
+    async fetchAdmins(context){
+      const res = await axios.get(`${LearnerPortal}admins`);
+      const {results, err} = await res.data;
+      if(results){
+        context.commit("setAdmins", results);
+      }else{
+        context.commit("setMessage", err);
+      }
+    },
+    async updateAdmin(context){
+      const res = await axios.put(`${LearnerPortal}admin/:id`);
+      const {msg, err} = await res.data;
+      if(msg){
+        context.commit("setMessage", msg);
+      }else{
+        context.commit("setMessage", err);
+      }
+    },
+    async deleteAdmin(context){
+      const res = await axios.delete(`${LearnerPortal}admin/:id`);
+      const {msg, err} = await res.data;
+      if(msg){
+        context.commit("setMessage", msg);
+      }else{
+        context.commit("setMessage", err);
+      }
+    },
     async fetchProducts(context) {
       const res = await axios.get(`${LearnerPortal}products`);
       const { results, err } = await res.data;

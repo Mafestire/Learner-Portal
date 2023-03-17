@@ -1,23 +1,15 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/contact">Contact</router-link> |
-    <router-link to="/login">Log In</router-link> |
-    <router-link to="/register">Register</router-link> |
-    <router-link to="/admin">Admin</router-link> | 
-    <router-link to="/services">Services</router-link>
-  </nav>
-  <!-- <NavMain/> -->
-  <router-view/>
+  <NavMain />
+  <div class="container-fluid min-vh-100">
+    <router-view />
+  </div>
 </template>
 
 <script>
-// import NavMain from "@/components/NavMain.vue"
-// export default {
-//   name: NavMain,
-//   component: {NavMain}
-// }
+import NavMain from "./components/NavBarComp.vue"
+export default {
+  components: { NavMain }
+}
 </script>
 
 <style>
