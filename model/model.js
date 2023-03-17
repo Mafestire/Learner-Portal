@@ -262,13 +262,13 @@ class Admin {
 class Product {
   fetchProducts(req, res) {
     const strQry = `SELECT ID, prodName, prodDescription, category, price, prodQuantity, imgURL
-                  FROM Products;`;
+                  FROM Products`;
     database.query(strQry, (err, data) => {
       if (err) throw err;
       res.status(200).json({ results: data });
     });
   }
-  fetchProducts(req, res) {
+  fetchProduct(req, res) {
     const strQry = `SELECT ID, prodName, prodDescription, category, price, prodQuantity, imgURL
                   FROM Products
                   WHERE id = ?;`;
