@@ -272,10 +272,10 @@ class Product {
   fetchProduct(req, res) {
     const strQry = `SELECT ID, prodName, prodDescription, category, price, prodQuantity, imgURL
                   FROM Products
-                  WHERE id = ?;`;
+                  WHERE ID = ?;`;
     database.query(strQry, [req.params.id], (err, results) => {
       if (err) throw err;
-      res.status(200).json({ results: results });
+      res.status(200).json({ result: results });
     });
   }
   addProduct(req, res) {
