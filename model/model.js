@@ -15,13 +15,13 @@ class User {
         WHERE emailAddress = '${emailAddress}';
         `;
     database.query(stryQry, async (err, data) => {
-      if (err) throw err;
+      // if (err) throw err;
       if (!data || data == null) {
         res.status(401).json({ err: "Incorrect Email Address. Try Again" });
       } else {
-        console.log(data[0].userPassword);
-        await compare(userPassword, data[0].userPassword, (cErro, cResult) => {
-          if (cErro) throw cErro;
+        compare(userPassword, data[0].userPassword, (cErro, cResult) => {
+          if (cErro)
+            throw cErro;
           const jwToken = createToken({
             emailAddress,
             userPassword,
@@ -42,6 +42,7 @@ class User {
             });
           }
         });
+        // console.log(data[0].userPassword);
       }
     });
   }
