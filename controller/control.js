@@ -100,9 +100,9 @@ route.delete("/product/:id", bodyParser.json(), (req, res) => {
 route.get("/user/:id/carts", (req, res) => {
   cart.fetchCart(req, res);
 });
-// route.get("/user/:id/cart", (req, res) => {
-//   item.fetchCartItem(req, res);
-// });
+route.get("/user/:id/cart", (req, res) => {
+  item.fetchCartItem(req, res);
+});
 //add new product
 route.post("/user/:id/cart", bodyParser.json(), (req, res) => {
   cart.addCart(req, res);
