@@ -138,11 +138,11 @@ table {
     margin-top: .5rem;
 }
 
-#users tr,
+/* #users tr,
 #admins tr,
 #products tr :nth-child(even) {
     background-color: #CE3375;
-}
+} */
 
 #users tr,
 #admins tr,

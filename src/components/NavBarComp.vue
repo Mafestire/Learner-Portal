@@ -15,7 +15,8 @@
                     <router-link to="/register">Register</router-link> |
                     <router-link to="/admin">Admin</router-link> |
                     <router-link to="/services">Services</router-link> |
-                    <router-link to="/products">Products</router-link>
+                    <router-link to="/products">Products</router-link> |
+                    <router-link to="/cart">Cart</router-link>
 
                 </div>
             </div>

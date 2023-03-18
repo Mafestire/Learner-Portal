@@ -10,6 +10,8 @@ export default createStore({
     admin: null,
     products: null,
     product: null,
+    cart: null,
+    cartItem: null,
     token: null,
     showSpinner: true,
     showLoading: true,
@@ -50,6 +52,15 @@ export default createStore({
     setSingleProduct(state, product) {
       state.product = product;
     },
+
+    setCart(state, cart){
+      state.cart = cart
+    },
+
+    setCartItem(state, cartItem){
+      state.cartItem = cartItem
+    },
+
     sortProductsPrice: (state) => {
       state.products.sort((a, b) => {
         return a.price - b.price;
@@ -91,8 +102,8 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async updateUser(context){
-      const res = await axios.put(`${LearnerPortal}user/:id`);
+    async updateUser(context, id){
+      const res = await axios.put(`${LearnerPortal}user/${id}`);
       const { msg, err} = await res.data;
       if(msg){
         context.commit("setMessage", msg);
@@ -100,8 +111,8 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async deleteUser(context){
-      const res = await axios.delete(`${LearnerPortal}user/:id`);
+    async deleteUser(context, id){
+      const res = await axios.delete(`${LearnerPortal}user/${id}`);
       const {msg, err} = await res.data;
       if(msg){
         context.commit("setMessage", msg);
@@ -138,8 +149,8 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async updateAdmin(context){
-      const res = await axios.put(`${LearnerPortal}admin/:id`);
+    async updateAdmin(context, id){
+      const res = await axios.put(`${LearnerPortal}admin/${id}`);
       const {msg, err} = await res.data;
       if(msg){
         context.commit("setMessage", msg);
@@ -147,8 +158,8 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async deleteAdmin(context){
-      const res = await axios.delete(`${LearnerPortal}admin/:id`);
+    async deleteAdmin(context, id){
+      const res = await axios.delete(`${LearnerPortal}admin/${id}`);
       const {msg, err} = await res.data;
       if(msg){
         context.commit("setMessage", msg);
@@ -165,6 +176,17 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
+    async fetchProduct(context, id) {
+      const res = await axios.get(`${LearnerPortal}product/${id}`);
+      console.log(id);
+      const { result, err } = await res.data;
+      console.log(result);
+      if (result) {
+        context.commit("setSingleProduct", result[0]);
+      } else {
+        context.commit("setMessage", err);
+      }
+    },
     async addProduct(context) {
       const res = await axios.post(`${LearnerPortal}product`);
       const { msg, err } = await res.data;
@@ -174,8 +196,8 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async updateProduct(context) {
-      const res = await axios.put(`${LearnerPortal}product/:id`);
+    async updateProduct(context, id) {
+      const res = await axios.put(`${LearnerPortal}product/${id}`);
       const { msg, err } = await res.data;
       if (msg) {
         context.commit("setMessage", msg);
@@ -183,8 +205,55 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async deleteProduct(context) {
-      const res = await axios.delete(`${LearnerPortal}product/:id`);
+    async deleteProduct(context, id) {
+      const res = await axios.delete(`${LearnerPortal}product/${id}`);
+      const { msg, err } = await res.data;
+      if (msg) {
+        context.commit("setMessage", msg);
+      } else {
+        context.commit("setMessage", err);
+      }
+    },
+    async fetchCart(context, id){
+      const res = await axios.get(`${LearnerPortal}/user/${id}/carts`);
+      const {results, err} = await res.data;
+      console.log(results);
+      if(results){
+        context.commit("setCart", results);
+      }else{
+        context.commit("setMessage", err);
+      }
+    },
+    // async fetchCartItem(context){
+    //   const res = await axios.get(`${LearnerPortal}/user/:id/cart`);
+    //   const {result, err} = await res.data;
+    //   console.log(result);
+    //   if(result){
+    //     context.commit("setCartItem", result[0]);
+    //   }else{
+    //     context.commit("setMessage", err);
+    //   }
+    // },
+    async addCart(context, id){
+      const res = await axios.post(`${LearnerPortal}/user/${id}/cart`);
+      const {msg, err} = await res.data;
+      if(msg){
+        context.commit("setMessage", msg);
+      }else{
+        context.commit("setMessage", err);
+      }
+    },
+    async updateCart(context, id) {
+      const res = await axios.put(`${LearnerPortal}/user/${id}/cart/${id}`);
+      const { msg, err } = await res.data;
+      if (msg) {
+        context.commit("setMessage", msg);
+      } else {
+        context.commit("setMessage", err);
+      }
+    },
+    async deleteCart(context, id) {
+      const res = await axios.delete(`${LearnerPortal}/user/${id}/carts`);
       const { msg, err } = await res.data;
       if (msg) {
         context.commit("setMessage", msg);
