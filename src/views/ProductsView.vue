@@ -1,16 +1,24 @@
 <template>
     <div class="products">
         <h2>Products</h2>
+        <div class="spin" v-if="products == undefined">
+            <SpinnerComp />
+        </div>
+
+        <div class="sort">
+            <button @click="sortProducts()">Sort A - Z</button>
+        </div>
+
         <div class="cards">
             <div class="card" v-for="product in products" :key="product.ID" style="width: 18rem;">
                 <img :src="product.imgURL" style="width: 10rem; height: 11rem; ">
                 <div class="card-body">
-                    <h5 class="card-title">{{ product.prodName }}</h5>
+                    <h4 class="card-title">{{ product.prodName }}</h4>
                     <!-- <p class="card-text">{{ product.prodDescription }}</p> -->
-                    <p class="card-text">{{ product.category }}</p>
-                    <p class="card-text">{{ product.price }}</p>
-                    <router-link :to="{ name: 'product', params: { id: product.ID } }">view more</router-link> |
-                    <router-link :to="{ name: 'cart', params: { id: product.ID } }">add to cart</router-link>
+                    <p class="card-text" style="font-size: 1rem;">{{ product.category }}</p>
+                    <p class="card-text">R{{ product.price }}</p>
+                    <router-link id="link" :to="{ name: 'product', params: { id: product.ID } }">view more</router-link> |
+                    <router-link id="link" :to="{ name: 'cart', params: { id: product.ID } }">add to cart</router-link>
                 </div>
             </div>
         </div>
@@ -18,7 +26,12 @@
 </template>
 
 <script>
+import SpinnerComp from "@/components/SpinnerComp.vue";
+
 export default {
+    components: {
+        SpinnerComp
+    },
     computed: {
         products() {
             return this.$store.state.products;
@@ -27,7 +40,12 @@ export default {
 
     mounted() {
         this.$store.dispatch("fetchProducts");
-    }
+    },
+    methods: {
+        sortProducts() {
+            this.$store.commit("sortProducts");
+        }
+    },
 
 }
 </script>
@@ -41,10 +59,12 @@ export default {
 }
 
 .card {
-    border: 1px solid #CE3375;
+    border: 2px solid #CE3375;
     display: flex;
     width: 10rem;
     padding: 1rem;
+    color: #CE3375;
+    font-size: 1.3rem;
 }
 
 .card-body {
@@ -52,6 +72,10 @@ export default {
 }
 
 .card:hover {
-    background-color: #f34490;
+    background-color: #69E2FF;
+}
+
+#link{
+    font-size: 1rem;
 }
 </style>

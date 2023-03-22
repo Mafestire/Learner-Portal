@@ -127,23 +127,7 @@ export default {
     },
     methods: {
         registerForm() {
-            // let data = {
-            //     firstName : this.register.firstName,
-            //     lastName : this.register.lastName,
-            //     emailAddress : this.register.emailAddress,
-            //     contactNo : this.register.contactNo,
-            //     childFirstName : this.register.childFirstName,
-            //     childLastName : this.register.childLastName,
-            //     childAge : this.register.childAge,
-            //     childGender : this.register.childGender,
-            //     userRole : this.register.userRole,
-            //     relationship : this.register.relationship,
-            //     enrollment : this.register.enrollment,
-            //     userPassword : this.register.userPassword,
-            // }
-
             this.$store.dispatch("registerUser", this.register);
-
         }
 
     },

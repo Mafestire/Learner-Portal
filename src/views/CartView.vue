@@ -30,11 +30,11 @@
     },
 
     mounted() {
-        this.$store.dispatch("fetchCart", this.$route.params.id);
+        this.$store.dispatch("addCart", this.$route.params.id);
     }
     }
 </script>
-
+ 
 <style scoped>
 table{
     width: 35rem;

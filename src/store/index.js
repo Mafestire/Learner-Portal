@@ -1,11 +1,14 @@
 import { createStore } from "vuex";
 import axios from "axios";
-const LearnerPortal = "https://learner-portal-8hg3.onrender.com/";
+import {useCookies} from 'vue3-cookies';
+const LearnerPortal = "http://localhost:7020/";
+const {cookies} = useCookies();
 
 export default createStore({
   state: {
     users: null,
     user: null,
+    userLogged: null,
     admins: null,
     admin: null,
     products: null,
@@ -37,6 +40,10 @@ export default createStore({
       state.users = users;
     },
 
+    logUser(state, userLogged){
+      state.userLogged = userLogged
+    },
+
     setMessage(state, value) {
       state.message = value;
     },
@@ -61,7 +68,7 @@ export default createStore({
       state.cartItem = cartItem
     },
 
-    sortProductsPrice: (state) => {
+    sortProducts: (state) => {
       state.products.sort((a, b) => {
         return a.price - b.price;
       });
@@ -70,6 +77,7 @@ export default createStore({
       }
       state.asc = !state.asc;
     },
+
   },
   actions: {
     async registerUser(context, data) {
@@ -82,12 +90,13 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async loginUser(context, logger) {
+    async login(context, logger) {
       const res = await axios.post(`${LearnerPortal}login`, logger);
-      const { result, msg, err } = await res.data;
-      console.log("Store: ", result);
+      const { result,jwToken, msg, err } = await res.data;
       if (result) {
-        context.commit("setUser", result);
+        context.commit("logUser", result);
+        console.log("Store: ", result);
+        cookies.set("green_light", jwToken)
         context.commit("setMessage", msg);
       } else {
         context.commit("setMessage", err);
@@ -113,11 +122,11 @@ export default createStore({
     },
     async deleteUser(context, id){
       const res = await axios.delete(`${LearnerPortal}user/${id}`);
-      const {msg, err} = await res.data;
-      if(msg){
-        context.commit("setMessage", msg);
+      const {result, err} = await res.data;
+      if(result){
+        context.commit("setUsers", result);
       }else{
-        context.commit("setMessage", err);
+        context.commit("setUsers", err);
       }
     },
     async registerAdmin(context, data){

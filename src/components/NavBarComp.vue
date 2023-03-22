@@ -42,8 +42,8 @@ export default {
 nav {
     padding: 20px;
     position: sticky;
-    background-color: #69E2FF;
-}
+}    /* background-color: #69E2FF; */
+
 
 nav a {
     font-weight: bold;

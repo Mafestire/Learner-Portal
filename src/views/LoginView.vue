@@ -2,10 +2,11 @@
     <div class="back">
         <div class="cov">
 
-            <form @submit.prevent="loginUser">
+            <form @submit.prevent="login">
                 <h2>Welcome Back</h2>
                 <h4>Please Log In</h4>
                 <label>User Email</label>
+                {{ this.logUser?.firstName }}
                 <br>
                 <input type="text" v-model="logger.emailAddress" required>
                 <br>
@@ -35,14 +36,17 @@ export default {
     },
 
     computed: {
+        logUser(){
+            return this.$store.state.userLogged
+        },
         message() {
             return this.$store.state.message
         }
     },
 
     methods: {
-        loginUser() {
-            this.$store.dispatch("loginUser", this.logger);
+        login() {
+            this.$store.dispatch("login", this.logger);
         },
 
     },

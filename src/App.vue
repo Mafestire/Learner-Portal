@@ -24,7 +24,13 @@ export default {
 nav {
   padding: 30px;
   position: sticky;
-  background-color: #69E2FF;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px 0 #CE3375;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* border-radius: 10px; */
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  /* background-color: #69E2FF; */
 }
 
 nav a {

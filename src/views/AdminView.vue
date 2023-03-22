@@ -33,8 +33,8 @@
                         <td>{{ user.childGender }}</td>
                         <td>{{ user.enrollment }}</td>
                         <td>{{ user.firstName }}</td>
-                        <td><button>edit</button></td>
-                        <td><button>delete</button></td>
+                        <td><router-link to="/update">edit</router-link></td>
+                        <td><button @click="deleteUser(user.userID)">delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -63,7 +63,7 @@
                         <td>{{ admin.emailAddress }}</td>
                         <td>{{ admin.Profile }}</td>
                         <td><button>edit</button></td>
-                        <td><button>delete</button></td>
+                        <td><button @click="deleteAdmin(admin.adminID)">delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -97,7 +97,7 @@
                         <!-- <td>{{ product.imgURL }}</td> -->
                         <td><img :src="product.imgURL" style="width: 5rem;"> </td>
                         <td><button>edit</button></td>
-                        <td><button>delete</button></td>
+                        <td><button @click="deleteProducts(product.ID)">delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -124,7 +124,18 @@ export default {
         this.$store.dispatch("fetchUsers");
         this.$store.dispatch("fetchProducts");
         this.$store.dispatch("fetchAdmins");
-    }
+    },
+    methods: {
+        deleteUser(id){
+            this.$store.dispatch("deleteUser", id);
+        },
+        deleteAdmin(id){
+            this.$store.dispatch("deleteAdmin", id);
+        },
+        deleteProducts(id){
+            this.$store.dispatch("deleteProducts", id);
+        },
+    },
 }
 
 
