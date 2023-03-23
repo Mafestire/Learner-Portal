@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import axios from "axios";
 import {useCookies} from 'vue3-cookies';
 const LearnerPortal = "http://localhost:7020/";
+// const LearnerPortal = "https://learner-portal-8hg3.onrender.com/";
 const {cookies} = useCookies();
 
 export default createStore({

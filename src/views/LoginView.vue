@@ -36,7 +36,7 @@ export default {
     },
 
     computed: {
-        logUser(){
+        logUser() {
             return this.$store.state.userLogged
         },
         message() {
@@ -54,13 +54,6 @@ export default {
 </script>
 
 <style scoped>
-.back {
-    background-image: url(https://i.postimg.cc/8kt0fkwS/children-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 40rem;
-}
-
 form {
     width: 20rem;
     padding: 1.5rem;
@@ -70,7 +63,8 @@ form {
     border-radius: 10px;
     border: 1px solid;
     transform: translateY(50%);
-    margin-left: 25rem;
+    margin-right: auto;
+    margin-left: auto;
     color: #CE3375;
 }
 
@@ -80,12 +74,14 @@ label {
 
 button {
     margin-top: 1rem;
+    font-size: .7rem;
+    padding: .2rem;
     background-color: #CE3375;
     color: #00CCFF;
 }
 
 input {
-    background-color: #9EECFF;
+    background-color: wheat;
     color: black;
 }
 
@@ -96,5 +92,26 @@ p {
 .link {
     text-decoration: none;
     color: #CE3375;
+}
+
+form:hover {
+    width: 23rem;
+    font-size: 1.5rem;
+    margin-top: -5rem;
+
+}
+
+@media (width < 567px) {
+    form {
+        margin-right: auto;
+        margin-left: auto;
+        width: 10rem;
+        transform: translateY(0%);
+        font-size: 1rem;
+        box-shadow: none;
+        border: none;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
 }
 </style>

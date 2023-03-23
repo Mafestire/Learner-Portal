@@ -5,8 +5,8 @@
             <SpinnerComp />
         </div>
 
-        <div class="sort">
-            <button @click="sortProducts()">Sort A - Z</button>
+        <div class="sort" style="margin: 1rem;">
+            <button @click="sortProducts()">Sort price</button>
         </div>
 
         <div class="cards">
@@ -72,7 +72,8 @@ export default {
 }
 
 .card:hover {
-    background-color: #69E2FF;
+    background-color: #CE3375;
+    color: black;
 }
 
 #link{

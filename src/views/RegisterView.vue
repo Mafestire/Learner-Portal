@@ -36,11 +36,11 @@
                         <br>
                         <input type="number" v-model="register.childAge" placeholder="Enter Child's Age" required>
                         <br>
-                       
+
                     </div>
                     <div class="info2">
                         <label for="">Child's gender</label>
-                       <br>
+                        <br>
                         <select name="gender" id="gender" v-model="register.childGender" required>
                             <option value="">select</option>
                             <option value="female">Female</option>
@@ -91,9 +91,8 @@
                     <p class="lead">{{ message }}</p>
                 </div>
                 <input type="submit" class="btn btn-secondary" value="SIGN UP">
-                <!-- <button type="submit" class="btn btn-secondary">SIGN UP</button> -->
                 <br>
-                <!-- <router-link to="/login" class="link">Log In</router-link> -->
+                <router-link to="/login" class="link">Already have an account? Log In</router-link>
             </form>
         </div>
     </div>
@@ -135,13 +134,6 @@ export default {
 </script>
 
 <style scoped>
-.back {
-    background-image: url(https://i.postimg.cc/8kt0fkwS/children-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 40rem;
-}
-
 form {
     width: 25rem;
     padding: 1.5rem;
@@ -151,7 +143,8 @@ form {
     border-radius: 10px;
     border: 1px solid;
     transform: translateY(10%);
-    margin-left: 24rem;
+    margin-left: auto;
+    margin-right: auto;
     color: #CE3375;
 }
 
@@ -164,8 +157,7 @@ label {
     color: #CE3375;
 }
 
-button {
-    margin-top: 1rem;
+.btn {
     margin-bottom: 1rem;
     padding: .2rem;
     background-color: #CE3375;
@@ -174,13 +166,13 @@ button {
 }
 
 input {
-    background-color: #9EECFF;
+    background-color: #CE3375;
     color: black;
     text-align: center;
 }
 
 select {
-    background-color: #9EECFF;
+    background-color: #CE3375;
 }
 
 
@@ -209,5 +201,45 @@ p {
 
 h4 {
     margin-bottom: 1rem;
+}
+
+.lead {
+    margin-bottom: 1rem;
+}
+
+@media (width < 576px) {
+    form {
+        width: 10rem;
+        padding: 1.5rem;
+        box-shadow: none;
+        border: none;
+        color: #CE3375;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1rem;
+        transform: translateY(0%);
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info1 {
+        border-right: none;
+        padding-right: 1rem;
+    }
+
+    .info2 {
+        margin-left: -1.6rem;
+
+    }
+
+    #enrolment {
+        margin-left: -.5rem;
+
+    }
 }
 </style>

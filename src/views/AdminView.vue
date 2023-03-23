@@ -25,6 +25,7 @@
                         <td>{{ user.firstName }}</td>
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.contactNo }}</td>
+                        <td>{{ user.emailAddress }}</td>
                         <td>{{ user.relationship }}</td>
                         <td>{{ user.userRole }}</td>
                         <td>{{ user.childFirstName }}</td>
@@ -32,13 +33,12 @@
                         <td>{{ user.childAge }}</td>
                         <td>{{ user.childGender }}</td>
                         <td>{{ user.enrollment }}</td>
-                        <td>{{ user.firstName }}</td>
                         <td><router-link to="/update">edit</router-link></td>
                         <td><button @click="deleteUser(user.userID)">delete</button></td>
                     </tr>
                 </tbody>
             </table>
-            <button><router-link to="register">Add User</router-link></button>
+            <!-- <button><router-link to="register">Add User</router-link></button> -->
 
         </div>
 
@@ -143,22 +143,24 @@ export default {
 
 <style scoped>
 table {
-    background-color: aqua;
     width: 100%;
     padding: .5rem;
     margin-top: .5rem;
+    background-color: wheat;
 }
 
-/* #users tr,
-#admins tr,
-#products tr :nth-child(even) {
-    background-color: #CE3375;
-} */
+#users{
+    background-color: wheat !important;
+}
 
 #users tr,
 #admins tr,
 #products tr:hover {
     background-color: #f34490;
+}
+
+h1{
+    color: #CE3375;
 }
 
 .admins,
@@ -175,13 +177,13 @@ table {
 
 thead {
     color: black;
-    border: 1px solid #CE3375;
+    /* border: 1px solid #CE3375; */
 
 }
 
 tbody {
     color: black;
-    border: 1px solid #CE3375;
+    /* border: 1px solid #CE3375; */
 
 }
 

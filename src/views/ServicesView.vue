@@ -2,7 +2,7 @@
     <div class="b">
 
         <div class="serv">
-            <h1>Services</h1>
+            <h1 style="color: black;">Services</h1>
             <h2>Nursery and Creche</h2>
 
             <br>
@@ -138,7 +138,6 @@ export default {
 
 <style scoped>
 .b {
-    background-color: #9EECFF;
     height: 80rem;
 }
 
@@ -154,17 +153,17 @@ export default {
 .care {
     display: flex;
     justify-content: space-between;
-    margin-left: 5rem;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: -1rem;
 }
 
 .nursery img {
-    width: 15rem;
-    height: 15rem;
+    width: 13rem;
+    height: 12rem;
 }
 
 .top{
-    margin-left: -30rem;
     margin-bottom: .7rem;
 }
 
@@ -185,8 +184,8 @@ export default {
 }
 
 .pre img {
-    width: 20rem;
-    height: 15rem;
+    width: 15rem;
+    height: 12rem;
 }
 
 h2 {
@@ -196,19 +195,23 @@ h2 {
 }
 
 h4 {
-    color: #2a410a;
+    color: black;
     margin-top: 1rem;
+    font-size: 1.2rem;
 }
 
 .serv {
     transform: translateY(1%);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .info,
 .det,
-data,
+.data,
+
 .dat {
-    width: 35rem;
+    width: 30rem;
 }
 
 .det,
@@ -218,5 +221,69 @@ data,
 
 .pre h4 {
     margin-top: -1rem;
+}
+
+@media (width < 576px) {
+    .nursery,
+.pre,
+.after,
+.care {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+.nursery img {
+    width: 10rem;
+    height: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.after img {
+    width: 10em;
+    height: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.care img {
+    width: 10rem;
+    height: 5rem;
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pre img {
+    width: 10rem;
+    height: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.info,
+.det,
+data,
+.dat {
+    width: 15rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.serv{
+    margin-left: auto;
+    margin-right: auto;
+}
+h2{
+    font-size: 1rem;
+}
+h4{
+    font-size: 1rem;
+}
+
+p{
+    font-size: .9rem;
+}
+.top{
+    margin-left: 0rem;
+    margin-top: -2rem;
+}
 }
 </style>

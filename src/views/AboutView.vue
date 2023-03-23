@@ -17,7 +17,10 @@
           is our mission, and one we wont take lightly.
           Highly qualified staff
           Safe & secure environment
-          Strong principles & values</p>
+          Strong principles & values
+
+          Located at the heart of a growing township Mfuleni, we pride ourselves in working hard to develop not just the physical growth but cognitive development.
+        </p>
       </div>
     </div>
   </div>
@@ -36,7 +39,7 @@ export default {
 
 .about {
   width: 30rem;
-  /* margin-left: 22rem; */
+  color: black;
   margin-top: .7rem;
   font-size: 1.2rem;
 }
@@ -62,5 +65,66 @@ img {
 .images {
   display: flex;
   justify-content: space-around;
+}
+
+@media (width < 576px) {
+  .about{
+    font-size: 1rem;
+    width: 13rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .info{
+    display: flex;
+    flex-direction: column;
+   
+    text-align: center;
+  }
+  .info img{
+    display: none;
+  }
+  h2{
+    margin-left: .5rem;
+  }
+}
+
+@media (width > 576px) {
+  .about{
+    font-size: 1rem;
+    width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .info{
+    display: flex;
+    flex-direction: column;
+   
+    text-align: center;
+  }
+  .info img{
+    display: none;
+  }
+  h2{
+    margin-left: .5rem;
+  }
+}
+
+@media (width > 992px) {
+  .about{
+    font-size: 1rem;
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .info{
+    display: flex;
+    flex-direction: column;
+   
+    text-align: center;
+  }
+  
+  h2{
+    margin-left: .5rem;
+  }
 }
 </style>

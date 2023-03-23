@@ -16,12 +16,14 @@
                     <router-link to="/admin">Admin</router-link> |
                     <router-link to="/services">Services</router-link> |
                     <router-link to="/products">Products</router-link> |
-                    <router-link to="/cart">Cart</router-link>
+                    <router-link to="/cart"><i class="fa-light fa-cart-shopping"></i></router-link>
 
                 </div>
             </div>
         </nav>
     </div>
+
+    
 </template>
 
 <script>
@@ -36,7 +38,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: black;
 }
 
 nav {
