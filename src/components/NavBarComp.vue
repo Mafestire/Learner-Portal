@@ -1,5 +1,5 @@
 <template>
-    <div class="nav">
+    <!-- <div class="nav">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <router-link to="/"></router-link> <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -14,6 +14,7 @@
                     <router-link to="/login">Log In</router-link> |
                     <router-link to="/register">Register</router-link> |
                     <router-link to="/admin">Admin</router-link> |
+                    <router-link to="/profile">Profile</router-link> |
                     <router-link to="/services">Services</router-link> |
                     <router-link to="/products">Products</router-link> |
                     <router-link to="/cart"><i class="fa-light fa-cart-shopping"></i></router-link>
@@ -21,9 +22,44 @@
                 </div>
             </div>
         </nav>
-    </div>
+    </div> -->
 
-    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mange</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"> <router-link to="/dashboard">Dashboard</router-link> |
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"> <router-link to="/products">Products</router-link> |
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"> <router-link to="/cart">Cart</router-link> |
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" > <router-link to="/contact">Contacts</router-link> |
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> <router-link to="/">Logout</router-link> 
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
 </template>
 
 <script>

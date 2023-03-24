@@ -1,5 +1,7 @@
 <template>
   <div>
+    <landing-nav />
+
     <div class="home">
       <div class="text">
         <h1>Welcome</h1>
@@ -42,8 +44,13 @@
 </template>
 
 <script>
+import LandingNav from '@/components/LandingNav.vue';
+
 // import axios from 'axios'
 export default {
+  components: {
+    LandingNav
+  },
   computed: {
     sortAndFilterProducts() {
       let sortedProducts = this.sortProducts();
@@ -53,34 +60,38 @@ export default {
     },
   },
   methods: {
-
     sortPrice() {
-      this.$store.commit("sortProductsPrice")
+      this.$store.commit("sortProductsPrice");
     },
     sortProducts() {
       let sort = this.sortBy;
       return this.sortProducts.sort((a, b) => {
-        if (a[sort] < b[sort]) return -1;
-        if (a[sort] > b[sort]) return 1;
+        if (a[sort] < b[sort])
+          return -1;
+        if (a[sort] > b[sort])
+          return 1;
         return 0;
       });
     },
     filteredProducts(products) {
-      if (this.filterBy === 'all') {
+      if (this.filterBy === "all") {
         return products;
-      } else {
+      }
+      else {
         return products.filter(product => product.category === this.filterBY);
       }
     },
     searchProducts(products) {
-      if (this.search === '') {
+      if (this.search === "") {
         return products;
-      } else {
+      }
+      else {
         return products.filter(product => product.name.toLowerCase().includes(this.searchProducts.toLowerCase()));
       }
     }
-  }
+  },
 }
+
 </script>
 
 <!-- <style>

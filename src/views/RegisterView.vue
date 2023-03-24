@@ -1,4 +1,6 @@
 <template>
+    <landingNav />
+
     <div class="back">
         <div class="cov">
 
@@ -99,8 +101,13 @@
 </template>
 
 <script>
+import LandingNav from '@/components/LandingNav.vue';
+
 export default {
-    name: 'registerUser',
+    components: {
+        LandingNav
+    },
+    name: "registerUser",
     data() {
         return {
             register: {
@@ -121,14 +128,14 @@ export default {
     },
     computed: {
         message() {
-            return this.$store.state.message
+            return this.$store.state.message;
         }
     },
     methods: {
         registerForm() {
             this.$store.dispatch("registerUser", this.register);
+            this.$router.push('/login');
         }
-
     },
 }
 </script>

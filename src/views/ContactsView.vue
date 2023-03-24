@@ -1,4 +1,5 @@
 <template>
+    <LandingNav/>
     <div class="contacts">
         <div class="cont">
             <h2>Share with us your views</h2>
@@ -44,8 +45,10 @@
 </template>
 
 <script>
-export default {
+import LandingNav from '@/components/LandingNav.vue';
 
+export default {
+    components: { LandingNav }
 }
 </script>
 

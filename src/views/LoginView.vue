@@ -1,4 +1,5 @@
 <template>
+    <LandingNav/>
     <div class="back">
         <div class="cov">
 
@@ -25,7 +26,11 @@
 </template>
 
 <script>
+import LandingNav from '@/components/LandingNav.vue'
 export default {
+    components: {
+        LandingNav
+    },
     data() {
         return {
             logger: {
@@ -47,7 +52,11 @@ export default {
     methods: {
         login() {
             this.$store.dispatch("login", this.logger);
+            this.$router.push('/dashboard')
         },
+        
+
+        
 
     },
 }

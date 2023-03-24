@@ -1,4 +1,6 @@
 <template>
+<NavMain/>
+
     <div class="cart">
 <table>
     <thead>
@@ -22,7 +24,13 @@
 </template>
 
 <script>
+import NavMain from "@/components/NavBarComp.vue";
+
     export default {
+        components: {
+            NavMain
+        },
+
         computed: {
         cart() {
             return this.$store.state.cart;

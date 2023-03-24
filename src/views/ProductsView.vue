@@ -1,4 +1,6 @@
 <template>
+    <NavMain />
+
     <div class="products">
         <h2>Products</h2>
         <div class="spin" v-if="products == undefined">
@@ -10,7 +12,7 @@
         </div>
 
         <div class="cards">
-            <div class="card" v-for="product in products" :key="product.ID" style="width: 18rem;">
+            <div class="card" v-for="product in products" :key="product.ID" style="width: 18rem; height: 20rem;">
                 <img :src="product.imgURL" style="width: 10rem; height: 11rem; ">
                 <div class="card-body">
                     <h4 class="card-title">{{ product.prodName }}</h4>
@@ -27,10 +29,12 @@
 
 <script>
 import SpinnerComp from "@/components/SpinnerComp.vue";
+import NavMain from "@/components/NavBarComp.vue"
 
 export default {
     components: {
-        SpinnerComp
+        SpinnerComp,
+        NavMain
     },
     computed: {
         products() {

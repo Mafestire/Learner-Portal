@@ -1,16 +1,16 @@
 <template>
-  <NavMain />
+  <!-- <NavMain /> -->
   <div class="container-fluid min-vh-100">
     <router-view />
   </div>
 </template>
 
-<script>
+<!-- <script>
 import NavMain from "./components/NavBarComp.vue"
 export default {
   components: { NavMain }
 }
-</script>
+</script> -->
 
 <style>
 #app {

@@ -21,6 +21,7 @@ export default createStore({
     showLoading: true,
     asc: true,
     message: null,
+    page: null,
   },
   getters: {
     fetchUsers: (state) => state.users,
@@ -81,6 +82,8 @@ export default createStore({
 
   },
   actions: {
+
+
     async registerUser(context, data) {
       const res = await axios.post(`${LearnerPortal}register`, data);
       console.log("Register a new user: ", res);
@@ -97,7 +100,7 @@ export default createStore({
       if (result) {
         context.commit("logUser", result);
         console.log("Store: ", result);
-        cookies.set("green_light", jwToken)
+        cookies.set("green_light", jwToken);
         context.commit("setMessage", msg);
       } else {
         context.commit("setMessage", err);
@@ -109,6 +112,17 @@ export default createStore({
       if (results) {
         context.commit("setUsers", results);
       } else {
+        context.commit("setMessage", err);
+      }
+    },
+    async fetchUser(context, id){
+      const res = await axios.get(`${LearnerPortal}user/${id}`);
+      console.log(id);
+      const {result, err} = await res.data;
+      console.log(result);
+      if(result){
+        context.commit("setUser", result);
+      }else {
         context.commit("setMessage", err);
       }
     },
@@ -131,7 +145,7 @@ export default createStore({
       }
     },
     async registerAdmin(context, data){
-      const res = await axios.post(`$[LearnerPortal]register-admin`, data);
+      const res = await axios.post(`$[LearnerPortal]register/admin`, data);
       console.log("Register a new Admin: ", res);
       const {msg, err} = await res.data;
       if(msg){

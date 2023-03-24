@@ -1,5 +1,6 @@
 <template>
   <div>
+    <LandingNav/>
     <div class="welcome" id="about">
       <div class="images">
         <img src="https://i.postimg.cc/6QbVmchq/plane2.gif" alt="" srcset="">
@@ -29,8 +30,10 @@
 <script>
 // @ is an alias to /src
 
-export default {
+import LandingNav from '@/components/LandingNav.vue';
 
+export default {
+    components: { LandingNav }
 }
 </script>
 

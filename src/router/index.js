@@ -60,6 +60,16 @@ const routes = [
     path: "/update",
     name: "update",
     component: () => import("../components/UpdateProduct")
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: () => import("../views/UserProfileView")
+  },
+  {
+    path: "/register-admin",
+    name: "register-admin",
+    component: () => import("../views/RegisterAdmin")
   }
 ];
 
