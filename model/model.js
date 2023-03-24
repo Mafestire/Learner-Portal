@@ -19,9 +19,8 @@ class User {
       if (!data || data == null) {
         res.status(401).json({ err: "Incorrect Email Address. Try Again" });
       } else {
-        await compare(userPassword, data[0].userPassword, (cErr, cResult) => {
-          if (cErr)
-            throw cErr;
+        await compare(userPassword, data[0]?.userPassword, (cErr, cResult) => {
+          if (cErr) throw cErr;
           const jwToken = createToken({
             emailAddress,
             userPassword,
@@ -199,7 +198,7 @@ class Admin {
   async createAdmin(req, res) {
     let detail = req.body;
     detail.adminPassword = await hash(detail.adminPassword, 20);
-    let user = {
+    let admin = {
       emailAddress: detail.emailAddress,
       adminPassword: detail.adminPassword,
     };

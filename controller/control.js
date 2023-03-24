@@ -54,7 +54,7 @@ route.get("/admin/:id", (req, res) => {
   admin.fetchAdmin(req, res);
 });
 //--register admin
-route.post("/register-admin", bodyParser.json(), (req, res) => {
+route.post("/register/admin", bodyParser.json(), (req, res) => {
   admin.createAdmin(req, res);
 });
 //--admin login
