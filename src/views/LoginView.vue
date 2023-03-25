@@ -18,7 +18,6 @@
                 <p class="lead">{{ message }}</p>
                 <button type="submit" class="btn btn-secondary">LOG IN</button>
                 <br>
-                <!-- <p>Do not have an account? let's sign you up <button>SIGN UP</button></p> -->
                 <router-link to="/register" class="link">Do not have an account? let's sign you up </router-link>
             </form>
         </div>
@@ -65,11 +64,6 @@ export default {
 form {
     width: 20rem;
     padding: 1.5rem;
-    /* box-shadow: 0 8px 32px 0;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px); */
-    /* border-radius: 10px; */
-    /* border: 1px solid; */
     transform: translateY(20%);
     margin-right: auto;
     margin-left: auto;
@@ -104,17 +98,8 @@ p {
     color: #CE3375;
 }
 
-/* form:hover {
-    width: 23rem;
-    font-size: 1.5rem;
-    margin-top: -5rem;
-
-} */
-
 @media (width < 567px) {
     form {
-        /* margin-right: auto;
-        margin-left: auto; */
         margin-left: 1rem;
         width: 10rem;
         transform: translateY(0%);

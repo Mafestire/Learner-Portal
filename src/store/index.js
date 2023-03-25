@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import { useCookies } from "vue3-cookies";
-// const LearnerPortal = "http://localhost:7020/";
-const LearnerPortal = "https://learner-portal-8hg3.onrender.com/";
+const LearnerPortal = "http://localhost:7020/";
+// const LearnerPortal = "https://learner-portal-8hg3.onrender.com/";
 const { cookies } = useCookies();
 
 export default createStore({
@@ -157,10 +157,11 @@ export default createStore({
     },
     async logAdmin(context, logger) {
       const res = await axios.post(`${LearnerPortal}login/admin`, logger);
-      const { result, msg, err } = await res.data;
+      const { result,jwToken, msg, err } = await res.data;
       if (result) {
         context.commit("logAdmin", result);
         context.commit("setMessage", msg);
+        cookies.set("green_light", jwToken);
       } else {
         context.commit("setMessage", err);
       }
@@ -260,7 +261,7 @@ export default createStore({
     //   }
     // },
     async addCart(context, payload) {
-      const res = await axios.post(`${LearnerPortal}/user/${payload.id}/cart`);
+      const res = await axios.post(`${LearnerPortal}/user/${payload.userID}/cart`);
       const { msg, err } = await res.data;
       if (msg) {
         context.commit("setMessage", msg);

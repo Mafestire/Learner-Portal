@@ -19,8 +19,7 @@
                     <p class="card-text" style="font-size: 1rem;">{{ product.category }}</p>
                     <p class="card-text">R{{ product.price }}</p>
                     <router-link id="link" :to="{ name: 'product', params: { id: product.ID } }">view more</router-link> |
-                    <router-link id="link" :to="{ name: 'cart', params: { id: product.ID } }"><i
-                            class="fa-solid fa-cart-shopping"></i></router-link>
+                    <button @click="addCart"><i class="fa-solid fa-cart-shopping"></i></button>
                 </div>
             </div>
         </div>
@@ -42,6 +41,9 @@ export default {
         },
         logUser() {
             return this.$store.state.userLogged;
+        },
+        product(){
+            return this.$store.state.product;
         }
     },
 
@@ -51,6 +53,12 @@ export default {
     methods: {
         sortProducts() {
             this.$store.commit("sortProducts");
+        },
+        addCart(){
+            this.$store.dispatch("addCart", {
+                userID: this.logUser.userID,
+                ID: this.product.ID
+            })
         }
     },
 
