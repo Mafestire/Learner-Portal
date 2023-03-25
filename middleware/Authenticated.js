@@ -13,7 +13,7 @@ function createToken(user) {
     }
   );
 }
-function createToken(admin) {
+function createTokenAdmin(admin) {
   return sign(
     {
       emailAddress: admin.emailAddress,
@@ -49,4 +49,4 @@ function verifyToken(req, res, next) {
     res.status(400).json({ err: e.message });
   }
 }
-module.exports = { createToken, verifyToken };
+module.exports = { createToken, createTokenAdmin,  verifyToken };

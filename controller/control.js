@@ -58,7 +58,7 @@ route.post("/register/admin", bodyParser.json(), (req, res) => {
   admin.createAdmin(req, res);
 });
 //--admin login
-route.post("/login-admin", bodyParser.json(), (req, res) => {
+route.post("/login/admin", bodyParser.json(), (req, res) => {
   admin.loginAdmin(req, res);
 });
 //update admin

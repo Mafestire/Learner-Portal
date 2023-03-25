@@ -2,7 +2,7 @@
 const database = require("../config/config");
 // bcrypt & token
 let { hash, compare, hashSync } = require("bcrypt");
-let { createToken } = require("../middleware/Authenticated");
+let { createToken, createTokenAdmin } = require("../middleware/Authenticated");
 
 //--CLASSES
 //USER CLASS
@@ -196,21 +196,21 @@ class Admin {
     });
   }
   async createAdmin(req, res) {
-    let detail = req.body;
-    detail.adminPassword = await hash(detail.adminPassword, 20);
+    let details = req.body;
+    details.adminPassword = await hash(details.adminPassword, 20);
     let admin = {
-      emailAddress: detail.emailAddress,
-      adminPassword: detail.adminPassword,
+      emailAddress: details.emailAddress,
+      adminPassword: details.adminPassword,
     };
     const stryQry = `
         INSERT INTO Admins
         SET ?;
         `;
-    database.query(stryQry, [detail], (err) => {
+    database.query(stryQry, [details], (err) => {
       if (err) {
-        res.status(401).json({ err });
+        res.status(401).json({ err }), console.log(err);
       } else {
-        const jwToken = createToken(admin);
+        const jwToken = createTokenAdmin(admin);
         res.cookie("legitAdmin", jwToken, {
           maxAge: 3600000,
           httpOnly: true,
