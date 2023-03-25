@@ -132,7 +132,7 @@ class User {
 }
 //ADMIN CLASS
 class Admin {
-  login(req, res) {
+  loginAdmin(req, res) {
     const { emailAddress, adminPassword } = req.body;
     const stryQry = `
         SELECT adminID, firstName, lastName, emailAddress, adminPassword, adminProfile
@@ -149,7 +149,7 @@ class Admin {
           data[0].adminPassword,
           (cErro, cResult) => {
             if (cErro) throw cErro;
-            const jwToken = createToken({
+            const jwToken = createTokenAdmin({
               emailAddress,
               adminPassword,
             });
