@@ -71,12 +71,6 @@ export default {
 <style scoped>
 form {
     width: 25rem;
-    /* padding: 1.5rem;
-    box-shadow: 0 8px 32px 0;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border-radius: 10px;
-    border: 1px solid; */
     transform: translateY(10%);
     margin-left: auto;
     margin-right: auto;
@@ -127,12 +121,10 @@ h4 {
 @media (width < 576px) {
     form {
         width: 10rem;
-        padding: 1.5rem;
         box-shadow: none;
         border: none;
         color: #CE3375;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: .7rem;
         font-size: 1rem;
     }
 
@@ -143,7 +135,6 @@ h4 {
 
     .info1 {
         border-right: none;
-        padding-right: 1rem;
     }
 }
 </style>

@@ -21,9 +21,15 @@
                             <a class="nav-link"> <router-link to="/contact">Contacts</router-link> |
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link"> <router-link to="/login">Log In</router-link> |
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Log In
                             </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/login">User</a></li>
+                                <li><a class="dropdown-item" href="/login-admin">Admin</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

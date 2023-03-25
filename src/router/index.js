@@ -70,6 +70,16 @@ const routes = [
     path: "/register-admin",
     name: "register-admin",
     component: () => import("../views/RegisterAdmin")
+  },
+  {
+    path: "/login-admin",
+    name: "login-admin",
+    component: () => import("../views/LoginAdminView")
+  },
+  {
+    path: "/lcontacts",
+    name: "lcontacts",
+    component: () => import("../views/loggedContView")
   }
 ];
 

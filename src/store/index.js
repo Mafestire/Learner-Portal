@@ -1,9 +1,9 @@
 import { createStore } from "vuex";
 import axios from "axios";
-import {useCookies} from 'vue3-cookies';
+import { useCookies } from "vue3-cookies";
 const LearnerPortal = "http://localhost:7020/";
 // const LearnerPortal = "https://learner-portal-8hg3.onrender.com/";
-const {cookies} = useCookies();
+const { cookies } = useCookies();
 
 export default createStore({
   state: {
@@ -29,21 +29,24 @@ export default createStore({
     fetchProducts: (state) => state.products,
     fetchProduct: (state) => state.product,
     fetchAdmin: (state) => state.admin,
-    fetchAdmins: (state) => state.admins
+    fetchAdmins: (state) => state.admins,
   },
   mutations: {
-    setAdmins(state, admins){
+    setAdmins(state, admins) {
       state.admins = admins;
     },
-    setAdmin(state, admin){
+    setAdmin(state, admin) {
       state.admin = admin;
+    },
+    logAdmin(state, adminLogged) {
+      state.adminLogged = adminLogged;
     },
     setUsers(state, users) {
       state.users = users;
     },
 
-    logUser(state, userLogged){
-      state.userLogged = userLogged
+    logUser(state, userLogged) {
+      state.userLogged = userLogged;
     },
 
     setMessage(state, value) {
@@ -62,12 +65,12 @@ export default createStore({
       state.product = product;
     },
 
-    setCart(state, cart){
-      state.cart = cart
+    setCart(state, cart) {
+      state.cart = cart;
     },
 
-    setCartItem(state, cartItem){
-      state.cartItem = cartItem
+    setCartItem(state, cartItem) {
+      state.cartItem = cartItem;
     },
 
     sortProducts: (state) => {
@@ -79,11 +82,8 @@ export default createStore({
       }
       state.asc = !state.asc;
     },
-
   },
   actions: {
-
-
     async registerUser(context, data) {
       const res = await axios.post(`${LearnerPortal}register`, data);
       console.log("Register a new user: ", res);
@@ -96,7 +96,7 @@ export default createStore({
     },
     async login(context, logger) {
       const res = await axios.post(`${LearnerPortal}login`, logger);
-      const { result,jwToken, msg, err } = await res.data;
+      const { result, jwToken, msg, err } = await res.data;
       if (result) {
         context.commit("logUser", result);
         console.log("Store: ", result);
@@ -115,79 +115,79 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async fetchUser(context, id){
+    async fetchUser(context, id) {
       const res = await axios.get(`${LearnerPortal}user/${id}`);
       console.log(id);
-      const {result, err} = await res.data;
+      const { result, err } = await res.data;
       console.log(result);
-      if(result){
+      if (result) {
         context.commit("setUser", result);
-      }else {
+      } else {
         context.commit("setMessage", err);
       }
     },
-    async updateUser(context, id){
+    async updateUser(context, id) {
       const res = await axios.put(`${LearnerPortal}user/${id}`);
-      const { msg, err} = await res.data;
-      if(msg){
+      const { msg, err } = await res.data;
+      if (msg) {
         context.commit("setMessage", msg);
-      }else{
+      } else {
         context.commit("setMessage", err);
       }
     },
-    async deleteUser(context, id){
+    async deleteUser(context, id) {
       const res = await axios.delete(`${LearnerPortal}user/${id}`);
-      const {result, err} = await res.data;
-      if(result){
+      const { result, err } = await res.data;
+      if (result) {
         context.commit("setUsers", result);
-      }else{
+      } else {
         context.commit("setUsers", err);
       }
     },
-    async registerAdmin(context, data){
+    async registerAdmin(context, data) {
       const res = await axios.post(`$[LearnerPortal]register/admin`, data);
       console.log("Register a new Admin: ", res);
-      const {msg, err} = await res.data;
-      if(msg){
+      const { msg, err } = await res.data;
+      if (msg) {
         context.commit("setMessage", msg);
-      }else{
+      } else {
         context.commit("setMessage", err);
       }
     },
-    async loginAdmin(context, logger){
-      const res = await axios.post(`${LearnerPortal}login-admin`, logger);
-      const {result, msg, err} = await res.data;
-      if(result){
-        context.commit("setAsmin", result);
+    async loginAdmin(context, logger) {
+      const res = await axios.post(`${LearnerPortal}login/admin`, logger);
+      const { result, msg, err } = await res.data;
+      if (result) {
+        context.commit("logAdmin", result);
         context.commit("setMessage", msg);
-      }else{
+      } else {
         context.commit("setMessage", err);
       }
     },
-    async fetchAdmins(context){
+    async fetchAdmins(context) {
       const res = await axios.get(`${LearnerPortal}admins`);
-      const {results, err} = await res.data;
-      if(results){
+      const { results, err } = await res.data;
+      if (results) {
         context.commit("setAdmins", results);
-      }else{
+      } else {
         context.commit("setMessage", err);
       }
     },
-    async updateAdmin(context, id){
+    async updateAdmin(context, id) {
       const res = await axios.put(`${LearnerPortal}admin/${id}`);
-      const {msg, err} = await res.data;
-      if(msg){
+      const { msg, err } = await res.data;
+      if (msg) {
         context.commit("setMessage", msg);
-      }else{
+      } else {
         context.commit("setMessage", err);
       }
     },
-    async deleteAdmin(context, id){
+    async deleteAdmin(context, id) {
       const res = await axios.delete(`${LearnerPortal}admin/${id}`);
-      const {msg, err} = await res.data;
-      if(msg){
+      const { msg, err } = await res.data;
+      if (msg) {
         context.commit("setMessage", msg);
-      }else{
+      } else {
         context.commit("setMessage", err);
       }
     },
@@ -238,13 +238,13 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async fetchCart(context, id){
+    async fetchCart(context, id) {
       const res = await axios.get(`${LearnerPortal}/user/${id}/carts`);
-      const {results, err} = await res.data;
+      const { results, err } = await res.data;
       console.log(results);
-      if(results){
+      if (results) {
         context.commit("setCart", results);
-      }else{
+      } else {
         context.commit("setMessage", err);
       }
     },
@@ -258,12 +258,12 @@ export default createStore({
     //     context.commit("setMessage", err);
     //   }
     // },
-    async addCart(context, id){
-      const res = await axios.post(`${LearnerPortal}/user/${id}/cart`);
-      const {msg, err} = await res.data;
-      if(msg){
+    async addCart(context, payload) {
+      const res = await axios.post(`${LearnerPortal}/user/${payload.id}/cart`);
+      const { msg, err } = await res.data;
+      if (msg) {
         context.commit("setMessage", msg);
-      }else{
+      } else {
         context.commit("setMessage", err);
       }
     },

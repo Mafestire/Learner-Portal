@@ -43,11 +43,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"> <router-link to="/cart">Cart</router-link> |
+                        <a class="nav-link"> <router-link to="/cart"><i class="fa-solid fa-cart-shopping"></i></router-link> |
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" > <router-link to="/contact">Contacts</router-link> |
+                        <a class="nav-link" > <router-link to="/lcontacts">Contacts</router-link> |
                         </a>
                     </li>
                     <li class="nav-item">

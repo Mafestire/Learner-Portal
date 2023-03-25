@@ -1,7 +1,10 @@
 <template>
-    <NavMain/>
+    <NavMain />
+ <div class="spin" v-if="logUser == undefined">
+            <SpinnerComp />
+        </div>
 
-    <div class="profile" >
+    <div class="profile" v-if="logUser">
         <section class="h-100 gradient-custom-2">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -17,9 +20,9 @@
                                         Edit profile
                                     </button>
                                 </div>
-                                <div id="details" class="ms-3" style="margin-top: 0px;" v-if="user in fetchUser" :key="user.userID">
-                                    <h5>{{user.firstName}}</h5>
-                                    <p>New York</p>
+                                <div id="details" class="ms-3" style="margin-top: 0px;">
+                                    <h5>{{ logUser.firstName }}</h5>
+                                    <p>{{ logUser.firstName }}</p>
                                 </div>
                             </div>
                             <div class="p-4 text-black" style="margin-top: 2rem;">
@@ -82,18 +85,16 @@
 
 <script>
 import NavMain from "@/components/NavBarComp.vue"
+import SpinnerComp from "@/components/SpinnerComp.vue";
+
 export default {
-    components: { NavMain },
+    components: { NavMain, SpinnerComp },
 
     computed: {
-        fetchUser() {
-            return this.$store.state.user;
+        logUser() {
+            return this.$store.state.userLogged;
         }
     },
-
-    created() {
-        this.$store.dispatch("fetchUser");
-    }
 }
 </script>
 

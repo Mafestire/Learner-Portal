@@ -2,10 +2,10 @@
     <div class="spin" v-if="product == undefined">
         <SpinnerComp />
     </div>
-    <div class="single">
+    <div class="single" style="width: 18rem;" >
 
-        <div class="cards">
-            <div class="card" style="width: 18rem;">
+        <div class="cards" >
+            <div class="card" style="background-color: #CE3375; width: 18rem;">
                 <img :src="product?.imgURL" style="width: 13rem; height: 11rem; ">
                 <div class="card-body">
                     <h5 class="card-title">{{ product?.prodName }}</h5>
@@ -31,6 +31,9 @@ export default {
     computed: {
         product() {
             return this.$store.state.product;
+        },
+        logUser() {
+            return this.$store.state.userLogged;
         }
     },
 
@@ -46,21 +49,15 @@ export default {
     height: 19rem;
     margin-left: 27rem;
     margin-top: 8rem;
-    /* background: rgba(255, 255, 255, 0.25); */
     box-shadow: 0 8px 32px 0 #CE3375;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border-radius: 10px;
     border: 1px solid #CE3375;
 }
 
  img{
-    margin-left: -25rem;
+    margin-left: -10rem;
     margin-top: 3.7rem;
     background: wheat;
     box-shadow: 0 8px 32px 0 #CE3375;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
     border: 1px solid #CE3375;
 }
@@ -68,7 +65,8 @@ export default {
 .card-body{
     font-size: 2rem;
     margin-top: -11rem;
-    margin-left: 6rem;
+    margin-left: 2rem;
+    color: black;
     margin-bottom: 2rem;
 }
 

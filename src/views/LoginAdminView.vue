@@ -3,11 +3,11 @@
     <div class="back">
         <div class="cov">
 
-            <form @submit.prevent="login">
-                <h2>User</h2>
+            <form @submit.prevent="logAdmin">
+                <h2>Admin</h2>
                 <h4>Please Log In</h4>
                 <label>User Email</label>
-                {{ this.logUser?.firstName }}
+                {{ this.logAdmin?.firstName }}
                 <br>
                 <input type="text" v-model="logger.emailAddress" required>
                 <br>
@@ -19,7 +19,7 @@
                 <button type="submit" class="btn btn-secondary">LOG IN</button>
                 <br>
                 <!-- <p>Do not have an account? let's sign you up <button>SIGN UP</button></p> -->
-                <router-link to="/register" class="link">Do not have an account? let's sign you up </router-link>
+                <router-link to="/register-admin" class="link">Do not have an account? let's sign you up </router-link>
             </form>
         </div>
     </div>
@@ -41,21 +41,20 @@ export default {
     },
 
     computed: {
-        logUser() {
-            return this.$store.state.userLogged
+        logAdmin() {
+            return this.$store.state.logAdmin
         },
         message() {
             return this.$store.state.message
-        }
+        },
+
     },
 
     methods: {
-      async  login() {
-           await this.$store.dispatch("login", this.logger);
-             if (this.logUser) {
-                this.$router.push({name: 'dashboard'});
-            }
-
+        async loginAdmin() {
+            await this.$store.dispatch("loginAdmin", this.logger);
+             if (this.loginAdmin) {
+                this.$router.push('/admin')
             }
         },
 
@@ -63,6 +62,7 @@ export default {
 
 
     }
+}
 </script>
 
 <style scoped>

@@ -83,6 +83,7 @@
                         <label for="">Create Password</label>
                         <br>
                         <input type="password" v-model="register.userPassword" placeholder="Enter Password" required>
+                        <br>
                         <label for="">Confirm Password</label>
                         <br>
                         <input type="password" placeholder="Confirm Password" required>
@@ -142,14 +143,7 @@ export default {
 
 <style scoped>
 form {
-    width: 25rem;
     padding: 1.5rem;
-    box-shadow: 0 8px 32px 0;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border-radius: 10px;
-    border: 1px solid;
-    transform: translateY(10%);
     margin-left: auto;
     margin-right: auto;
     color: #CE3375;
@@ -194,7 +188,7 @@ p {
 }
 
 .info1 {
-    border-right: 1px solid black;
+    border-right: 1px solid #CE3375;
     padding-right: 1rem;
 }
 
@@ -202,9 +196,7 @@ p {
     padding-left: 1rem;
 }
 
-.info2 label {
-    margin-top: 2rem;
-}
+
 
 h4 {
     margin-bottom: 1rem;
@@ -216,17 +208,17 @@ h4 {
 
 @media (width < 576px) {
     form {
-        width: 10rem;
-        padding: 1.5rem;
+        /* width: 10rem; */
+        /* padding: 1.5rem; */
         box-shadow: none;
         border: none;
         color: #CE3375;
         margin-left: auto;
         margin-right: auto;
-        font-size: 1rem;
-        transform: translateY(0%);
-        backdrop-filter: blur(0px);
-        -webkit-backdrop-filter: blur(0px);
+        /* font-size: 1rem; */
+        /* transform: translateY(0%); */
+        /* backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px); */
     }
 
     .info {
@@ -236,16 +228,22 @@ h4 {
 
     .info1 {
         border-right: none;
-        padding-right: 1rem;
+        margin-left: -1.2rem;
+
+        /* margin-left: auto;
+        margin-right: auto; */
+        /* padding-right: 1rem; */
     }
 
     .info2 {
-        margin-left: -1.6rem;
+        /* margin-left: auto;
+        margin-right: auto; */
+        margin-left: -1.8rem;
 
     }
 
     #enrolment {
-        margin-left: -.5rem;
+        margin-left: -.9rem;
 
     }
 }
