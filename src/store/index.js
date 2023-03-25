@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import { useCookies } from "vue3-cookies";
-const LearnerPortal = "http://localhost:7020/";
-// const LearnerPortal = "https://learner-portal-8hg3.onrender.com/";
+// const LearnerPortal = "http://localhost:7020/";
+const LearnerPortal = "https://learner-portal-8hg3.onrender.com/";
 const { cookies } = useCookies();
 
 export default createStore({
@@ -10,6 +10,7 @@ export default createStore({
     users: null,
     user: null,
     userLogged: null,
+    adminLogged: null,
     admins: null,
     admin: null,
     products: null,
@@ -154,7 +155,7 @@ export default createStore({
         context.commit("setMessage", err);
       }
     },
-    async loginAdmin(context, logger) {
+    async logAdmin(context, logger) {
       const res = await axios.post(`${LearnerPortal}login/admin`, logger);
       const { result, msg, err } = await res.data;
       if (result) {

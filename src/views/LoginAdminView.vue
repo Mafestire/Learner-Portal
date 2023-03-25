@@ -35,14 +35,14 @@ export default {
         return {
             logger: {
                 emailAddress: "",
-                userPassword: "",
+                adminPassword: "",
             }
         };
     },
 
     computed: {
-        logAdmin() {
-            return this.$store.state.logAdmin
+        loginAdmin() {
+            return this.$store.state.adminLogged
         },
         message() {
             return this.$store.state.message
@@ -51,8 +51,8 @@ export default {
     },
 
     methods: {
-        async loginAdmin() {
-            await this.$store.dispatch("loginAdmin", this.logger);
+        async logAdmin() {
+            await this.$store.dispatch("logAdmin", this.logger);
              if (this.loginAdmin) {
                 this.$router.push('/admin')
             }
@@ -108,17 +108,8 @@ p {
     color: #CE3375;
 }
 
-/* form:hover {
-    width: 23rem;
-    font-size: 1.5rem;
-    margin-top: -5rem;
-
-} */
-
 @media (width < 567px) {
     form {
-        /* margin-right: auto;
-        margin-left: auto; */
         margin-left: 1rem;
         width: 10rem;
         transform: translateY(0%);
