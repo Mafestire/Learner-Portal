@@ -10,4 +10,4 @@ function ErrHandling(err, req, res, next){
     }
     next();
 }
-// module.exports = {ErrHandling};
+module.exports = {ErrHandling};
