@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-</head>
-<body>
-    <h2>Hey Boo! we's working</h2>
-
-    <h2>Route Description</h2>
+  </head>
+  <body>
+    <h2> User Route Description</h2>
     <table>
       <thead>
         <th>Method</th>
@@ -18,10 +16,113 @@
       </thead>
       <tbody>
         <tr>
-          <td>get</td>
-          <td>/</td>
-          <td>To render the home page (index.html)</td>
+          <td>fetchUsers</td>
+          <td>/users</td>
+          <td>get: Get all users</td>
+        </tr>
+        <tr>
+          <td>fetchUser</td>
+          <td>/user/:id</td>
+          <td>get: Get a single user</td>
+        </tr>
+        <tr>
+          <td>createUsers</td>
+          <td>/register</td>
+          <td>post: a user</td>
+        </tr>
+        <tr>
+          <td>login</td>
+          <td>/login</td>
+          <td>post: a user</td>
+        </tr>
+        <tr>
+          <td>updateUsers</td>
+          <td>/user/:id</td>
+          <td>put: update a user</td>
+        </tr>
+        <tr>
+          <td>DeleteUsers</td>
+          <td>/user/:id</td>
+          <td>delete: a user</td>
         </tr>
       </tbody>
-</body>
+    </table>
+    
+    <h2>Admin Route Description</h2>
+    <table>
+      <thead>
+        <th>Method</th>
+        <th>Path</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>fetchAdmins</td>
+          <td>/admins</td>
+          <td>get: Get all admins</td>
+        </tr>
+        <tr>
+          <td>fetchAdmin</td>
+          <td>/admin/:id</td>
+          <td>get: Get a single admin</td>
+        </tr>
+        <tr>
+          <td>createAdmin</td>
+          <td>/register/admin</td>
+          <td>post: a admin</td>
+        </tr>
+        <tr>
+          <td>login</td>
+          <td>/login/admin</td>
+          <td>post: a admin</td>
+        </tr>
+        <tr>
+          <td>updateAdmin</td>
+          <td>/user/:id</td>
+          <td>put: update a admin</td>
+        </tr>
+        <tr>
+          <td>DeleteAdmin</td>
+          <td>/admin/:id</td>
+          <td>delete: a admin</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Admin Route Description</h2>
+    <table>
+      <thead>
+        <th>Method</th>
+        <th>Path</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>fetchProduct</td>
+          <td>/products</td>
+          <td>get: Get all products</td>
+        </tr>
+        <tr>
+          <td>fetchAdmin</td>
+          <td>/products/:id</td>
+          <td>get: Get a single products</td>
+        </tr>
+        <tr>
+          <td>createAdmin</td>
+          <td>/product</td>
+          <td>post: a products</td>
+        </tr>
+        <tr>
+          <td>updateAdmin</td>
+          <td>/product/:id</td>
+          <td>put: update a products</td>
+        </tr>
+        <tr>
+          <td>DeleteAdmin</td>
+          <td>/product/:id</td>
+          <td>delete: a products</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
 </html>
